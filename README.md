@@ -7,16 +7,16 @@ Repository for the class of Object-Oriented Programming at ESPE in 2024 11 07
 - Projects
 - Other documents
 
-*Authors:*
+**Authors:**
 
 - Klever Jami
 - Jose Leiton
 - Gabriel Manosalvas
 - Gabriel Jardel
 
-*Instructor:* Edison Lascano
+**Instructor:** Edison Lascano
 
-*Project tittle*
+**Project tittle**
 
 # CondoManage: Comprehensive Condominium Management Platform
 
