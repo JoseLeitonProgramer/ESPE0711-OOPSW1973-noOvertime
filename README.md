@@ -12,7 +12,7 @@ Repository for the class of Object-Oriented Programming at ESPE in 2024 11 07
 - Klever Jami
 - Jose Leiton
 - Gabriel Manosalvas
-- Gabriel Jardel
+- Jardel Maza 
 
 **Instructor:** Edison Lascano
 
