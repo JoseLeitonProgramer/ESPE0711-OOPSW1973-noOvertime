@@ -1,0 +1,12 @@
+{
+  "id": 12,
+  "ageInYears": 24,
+  "nameOwner": "meru",
+  "numberHouse": 12,
+  "expense": 21.0,
+  "pets": 2,
+  "vehicles": 3,
+  "residents": 4,
+  "bornOnDate": "2000-03-26",
+  "not": false
+}
