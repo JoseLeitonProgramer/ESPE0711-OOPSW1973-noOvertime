@@ -5,6 +5,7 @@
 - Roles y permisos: Diferenciar entre usuarios (administrador, residente, visitante) y asignar permisos específicos.
 - Registro y autenticación: Los usuarios deben poder crear cuentas, iniciar sesión, y actualizar su perfil.
 - Gestión de unidades y residentes: Registrar todas las unidades del condominio y los datos de los residentes asociados.
+- Alertas de morosidad: Enviar notificaciones automáticas a residentes con pagos atrasados.
 
 ## Gestión financiera
 
@@ -17,6 +18,7 @@
 - Programación de mantenimiento: Crear y gestionar un calendario para tareas de mantenimiento (p. ej., limpieza de áreas comunes, reparaciones).
 - Gestión de solicitudes de reparación: Permitir a los residentes solicitar reparaciones o mantenimiento y hacer seguimiento del estado de cada solicitud.
 - Inventario de suministros: Registro de materiales y equipos utilizados para mantenimiento, con control de stock.
+- Solicitudes de reparación: Permitir a los residentes hacer solicitudes con fotos adjuntas y realizar seguimiento del progreso.
 
 ##  Comunicaciones
 
@@ -43,7 +45,7 @@
 
 - Documentos importantes: Almacenar reglamentos, contratos y otros documentos legales para referencia.
 - Historial de actividades: Mantener un historial de todos los eventos y actividades realizados, útil para auditorías o reuniones.
-
+- Notificación de cambios: Informar automáticamente a los residentes sobre actualizaciones en documentos importantes.
 ## Usabilidad y accesibilidad
 
 - Interfaz intuitiva: Diseño accesible y amigable para facilitar el uso del sistema, incluso para usuarios con poca experiencia tecnológica.
