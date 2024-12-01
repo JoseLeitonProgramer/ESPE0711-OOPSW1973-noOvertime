@@ -18,57 +18,56 @@ public class CondominiumSimulatorApp {
     public static void main(String[] args) {
         System.out.println("Jose's Condominium Simulator");
 
-        // Crear objeto Scanner para recibir entrada del usuario
-        Scanner scanner = new Scanner(System.in);
-
         // Solicitar y leer datos desde la consola
-        System.out.print("Enter House ID: ");
-        int id = scanner.nextInt();
-
-        scanner.nextLine();  // Limpiar el buffer del Scanner
-
-        System.out.print("Enter Owner's Name: ");
-        String nameOwner = scanner.nextLine();
-
-        System.out.print("Enter House Number: ");
-        int numberHouse = scanner.nextInt();
-
-        System.out.print("Enter Monthly Expense: ");
-        float expense = scanner.nextFloat();
-
-        System.out.print("Enter Number of Pets: ");
-        int pets = scanner.nextInt();
-
-        System.out.print("Enter Number of Vehicles: ");
-        int vehicles = scanner.nextInt();
-
-        System.out.print("Enter Number of Residents: ");
-        int residents = scanner.nextInt();
-
-        System.out.print("Enter the Year of Birth (YYYY): ");
-        int year = scanner.nextInt();
-
-        System.out.print("Enter the Month of Birth (MM): ");
-        int month = scanner.nextInt();
-
-        System.out.print("Enter the Day of Birth (DD): ");
-        int day = scanner.nextInt();
-
-        LocalDate bornOnDate = LocalDate.of(year, month, day);
-
-        House house = new House(id, nameOwner, numberHouse, expense, pets, vehicles, residents, bornOnDate, false);
-
-        // Mostrar los detalles de la casa
-        System.out.println("\nHouse details:");
-        System.out.println("House --> " + house);
-
-        // Guardar los datos en un archivo JSON
-        saveHouseToJson(house);
-
-        // Guardar los datos en un archivo CSV
-        saveHouseToCsv(house);
-
-        scanner.close();
+        try ( // Crear objeto Scanner para recibir entrada del usuario
+                Scanner scanner = new Scanner(System.in)) {
+            // Solicitar y leer datos desde la consola
+            System.out.print("Enter House ID: ");
+            int id = scanner.nextInt();
+            
+            scanner.nextLine();  // Limpiar el buffer del Scanner
+            
+            System.out.print("Enter Owner's Name: ");
+            String nameOwner = scanner.nextLine();
+            
+            System.out.print("Enter House Number: ");
+            int numberHouse = scanner.nextInt();
+            
+            System.out.print("Enter Monthly Expense: ");
+            float expense = scanner.nextFloat();
+            
+            System.out.print("Enter Number of Pets: ");
+            int pets = scanner.nextInt();
+            
+            System.out.print("Enter Number of Vehicles: ");
+            int vehicles = scanner.nextInt();
+            
+            System.out.print("Enter Number of Residents: ");
+            int residents = scanner.nextInt();
+            
+            System.out.print("Enter the Year of Birth (YYYY): ");
+            int year = scanner.nextInt();
+            
+            System.out.print("Enter the Month of Birth (MM): ");
+            int month = scanner.nextInt();
+            
+            System.out.print("Enter the Day of Birth (DD): ");
+            int day = scanner.nextInt();
+            
+            LocalDate bornOnDate = LocalDate.of(year, month, day);
+            
+            House house = new House(id, nameOwner, numberHouse, expense, pets, vehicles, residents, bornOnDate, false);
+            
+            // Mostrar los detalles de la casa
+            System.out.println("\nHouse details:");
+            System.out.println("House --> " + house);
+            
+            // Guardar los datos en un archivo JSON
+            saveHouseToJson(house);
+            
+            // Guardar los datos en un archivo CSV
+            saveHouseToCsv(house);
+        }
     }
 
     private static void saveHouseToJson(House house) {
