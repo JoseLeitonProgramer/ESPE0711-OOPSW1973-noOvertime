@@ -50,3 +50,4 @@
 
 - Interfaz intuitiva: Diseño accesible y amigable para facilitar el uso del sistema, incluso para usuarios con poca experiencia tecnológica.
 - Multiplataforma: Acceso al sistema desde distintos dispositivos (móvil, tablet, ordenador) y desde cualquier ubicación.
+- Navegación simplificada: Menús claros y bien organizados, con accesos directos a las funciones más utilizadas.
