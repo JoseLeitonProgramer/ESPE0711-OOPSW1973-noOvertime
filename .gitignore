@@ -24,3 +24,6 @@ hs_err_pid*
 replay_pid*
 /netbeansProject/CondominiumManagementSystem/nbproject/private/
 /netbeansProject/CondominiumManagementSystem/build/
+diagrams/.lock
+diagrams/.vpprefdata/
+diagrams/CondoManagement.vpp.bak_000f
