@@ -2,7 +2,6 @@ package ec.espe.edu.condomanagement.view;
 
 import ec.espe.edu.condomanagement.model.*;
 import java.text.ParseException;
-
 import java.util.InputMismatchException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -56,7 +55,6 @@ public class PrjCondoManagement {
         }
     }
     
-
     private static void saveData() {
         FileManager.saveAdministrator(admin, "admin.json");
         System.out.println("Data saved successfully.");
@@ -99,8 +97,7 @@ public class PrjCondoManagement {
            }
         default -> System.out.println("Invalid choice.");
     }
-}
-        
+}   
     }
 
     private static void generateResidentUtilityBill() {
