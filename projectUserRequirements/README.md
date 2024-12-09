@@ -1,54 +1,38 @@
-### Requirements
 
-## Gestión de usuarios
-
-- Roles y permisos: Diferenciar entre usuarios (administrador, residente, visitante) y asignar permisos específicos.
-- Registro y autenticación: Los usuarios deben poder crear cuentas, iniciar sesión, y actualizar su perfil.
-- Gestión de unidades y residentes: Registrar todas las unidades del condominio y los datos de los residentes asociados.
-- Alertas de morosidad: Enviar notificaciones automáticas a residentes con pagos atrasados.
-
-## Gestión financiera
-
-- Cobros y facturación: Generación de facturas de cuotas de mantenimiento y otras tarifas (p. ej., estacionamiento, servicios adicionales).
-- Control de pagos: Registro de pagos realizados por cada residente y verificación de pagos pendientes.
-- Generación de reportes financieros: Crear reportes de ingresos y gastos para el administrador y los residentes, incluyendo estados de cuenta individuales.
-
-## Mantenimiento y servicios comunes
-
-- Programación de mantenimiento: Crear y gestionar un calendario para tareas de mantenimiento (p. ej., limpieza de áreas comunes, reparaciones).
-- Gestión de solicitudes de reparación: Permitir a los residentes solicitar reparaciones o mantenimiento y hacer seguimiento del estado de cada solicitud.
-- Inventario de suministros: Registro de materiales y equipos utilizados para mantenimiento, con control de stock.
-- Solicitudes de reparación: Permitir a los residentes hacer solicitudes con fotos adjuntas y realizar seguimiento del progreso.
-
-##  Comunicaciones
-
-- Notificaciones y recordatorios: Enviar recordatorios de pagos, notificaciones de eventos o avisos importantes a los residentes.
-- Foro o muro de anuncios: Espacio donde los residentes puedan comunicarse y recibir anuncios del administrador.
-- Encuestas y votaciones: Herramienta para realizar votaciones de la asamblea y recolectar opiniones de los residentes.
-
-## Reservación de áreas comunes
-
-- Calendario de reservas: Permitir a los residentes reservar áreas comunes (salón de eventos, piscina, gimnasio).
-- Control de disponibilidad: Evitar la duplicación de reservas y gestionar cancelaciones.
-
-## Seguridad y acceso
-
-- Registro de visitas: Registro de entrada de visitantes y vehículos.
-- Registro de salidas: Llevar un control de las horas de salida de visitantes y vehículos para complementar el registro de entradas.
-- Control de acceso: Gestión de permisos para el ingreso de personas o proveedores.
-
-## Reportes y análisis
-
-- Reportes administrativos: Generación de reportes detallados para el administrador sobre el estado general del condominio.
-- Análisis de ocupación y gastos: Reportes sobre la ocupación del condominio y análisis de los gastos.
-
-## Cumplimiento legal y documentación
-
-- Documentos importantes: Almacenar reglamentos, contratos y otros documentos legales para referencia.
-- Historial de actividades: Mantener un historial de todos los eventos y actividades realizados, útil para auditorías o reuniones.
-- Notificación de cambios: Informar automáticamente a los residentes sobre actualizaciones en documentos importantes.
-## Usabilidad y accesibilidad
-
-- Interfaz intuitiva: Diseño accesible y amigable para facilitar el uso del sistema, incluso para usuarios con poca experiencia tecnológica.
-- Multiplataforma: Acceso al sistema desde distintos dispositivos (móvil, tablet, ordenador) y desde cualquier ubicación.
-- Navegación simplificada: Menús claros y bien organizados, con accesos directos a las funciones más utilizadas.
+Requirements
+User Management
+Roles and Permissions: Differentiate between users (administrator, resident, visitor) and assign specific permissions.
+Registration and Authentication: Users should be able to create accounts, log in, and update their profiles.
+Unit and Resident Management: Register all condominium units and the data of associated residents.
+Delinquency Alerts: Send automated notifications to residents with overdue payments.
+Financial Management
+Billing and Invoicing: Generate invoices for maintenance fees and other charges (e.g., parking, additional services).
+Payment Tracking: Record payments made by each resident and verify pending payments.
+Financial Reporting: Create income and expense reports for the administrator and residents, including individual account statements.
+Maintenance and Common Services
+Maintenance Scheduling: Create and manage a calendar for maintenance tasks (e.g., cleaning common areas, repairs).
+Repair Requests Management: Allow residents to request repairs or maintenance and track the status of each request.
+Supply Inventory: Record materials and equipment used for maintenance, with stock control.
+Repair Requests: Enable residents to submit requests with attached photos and track progress.
+Communications
+Notifications and Reminders: Send payment reminders, event notifications, or important announcements to residents.
+Forum or Announcement Board: A space where residents can communicate and receive announcements from the administrator.
+Surveys and Voting: Tool to conduct assembly votes and collect resident opinions.
+Common Area Reservations
+Reservation Calendar: Allow residents to book common areas (event room, pool, gym).
+Availability Control: Prevent duplicate reservations and manage cancellations.
+Security and Access
+Visitor Registration: Log the entry of visitors and vehicles.
+Exit Registration: Track the exit times of visitors and vehicles to complement entry logs.
+Access Control: Manage permissions for the entry of people or suppliers.
+Reports and Analytics
+Administrative Reports: Generate detailed reports for the administrator about the overall state of the condominium.
+Occupancy and Expense Analysis: Reports on condominium occupancy and expense analysis.
+Legal Compliance and Documentation
+Important Documents: Store regulations, contracts, and other legal documents for reference.
+Activity History: Maintain a history of all events and activities conducted, useful for audits or meetings.
+Change Notifications: Automatically inform residents about updates to important documents.
+Usability and Accessibility
+Intuitive Interface: Accessible and user-friendly design to facilitate system use, even for users with limited technical experience.
+Cross-Platform: Access the system from various devices (mobile, tablet, computer) and any location.
+Simplified Navigation: Clear and well-organized menus, with shortcuts to the most frequently used functions
