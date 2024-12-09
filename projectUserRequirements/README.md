@@ -33,7 +33,8 @@
 
 ## Seguridad y acceso
 
-- Registro de visitas: Registro de visitantes y vehículos.
+- Registro de visitas: Registro de entrada de visitantes y vehículos.
+- Registro de salidas: Llevar un control de las horas de salida de visitantes y vehículos para complementar el registro de entradas.
 - Control de acceso: Gestión de permisos para el ingreso de personas o proveedores.
 
 ## Reportes y análisis
