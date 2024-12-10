@@ -11,7 +11,7 @@ import utils.FileManager;
 
 public class PrjCondoManagement {
 
-    private static Scanner scanner = new Scanner(System.in);
+    private static final Scanner scanner = new Scanner(System.in);
     private static Administrator admin = new Administrator("A1", "Admin");
     private static Resident currentResident; // Variable para mantener la sesión del residente
 // Método para leer la entrada y validar que sea un número entero
@@ -19,8 +19,8 @@ public class PrjCondoManagement {
         while (true) {
             try {
                 String input = scanner.nextLine();
-                int option = Integer.parseInt(input);  // Intenta convertir la entrada a un número entero
-                return option;  // Si tiene éxito, retorna el número
+                int option = Integer.parseInt(input);  
+                return option; 
             } catch (NumberFormatException e) {
                 System.out.println("Invalid input. Please enter a valid number.");
             }
@@ -40,7 +40,7 @@ public class PrjCondoManagement {
         System.out.println("5. Exit");
         System.out.print("Select an option: ");
     
-      int option = getIntInput();  // Usa el método de validación aquí
+      int option = getIntInput(); 
   
             switch (option) {
                 case 1 -> adminMenu();
