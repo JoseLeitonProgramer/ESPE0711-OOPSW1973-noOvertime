@@ -37,24 +37,15 @@ public class Menu {
             scanner.nextLine(); // Consumir el salto de línea
 
             switch (option) {
-                case 1:
-                    adminMenu();
-                    break;
-                case 2:
-                    residentLogin();
-                    break;
-                case 3:
-                    saveData();
-                    break;
-                case 4:
-                    loadData();
-                    break;
-                case 5:
+                case 1 -> adminMenu();
+                case 2 -> residentLogin();
+                case 3 -> saveData();
+                case 4 -> loadData();
+                case 5 -> {
                     System.out.println("Exiting... Goodbye!");
                     return;
-                default:
-                    System.out.println("Invalid option. Try again.");
-                    break;
+                }
+                default -> System.out.println("Invalid option. Try again.");
             }
         }
     }
