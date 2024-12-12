@@ -16,14 +16,14 @@ public class Menu {
 
     private static Scanner scanner = new Scanner(System.in);
     private static Administrator admin;
-    private static Resident currentResident;  // Variable para mantener la sesión del residente
+    private static Resident currentResident;  
 
-    // Cargar el administrador desde el archivo
+  
     public Menu() {
         admin = FileManager.loadAdministrator("admin.json");
     }
 
-// Menú principal
+
 public void displayMainMenu() {
     while (true) {
         try {
@@ -35,11 +35,11 @@ public void displayMainMenu() {
             System.out.println("5. Exit");
             System.out.print("Select an option: ");
 
-            // Intentar leer la entrada del usuario
+            
             int option = scanner.nextInt();
-            scanner.nextLine(); // Consumir el salto de línea
+            scanner.nextLine(); 
 
-            // Procesar la opción seleccionada
+            
             switch (option) {
                 case 1 -> adminMenu();
                 case 2 -> residentLogin();
@@ -52,31 +52,31 @@ public void displayMainMenu() {
                 default -> System.out.println("Invalid option. Please select a number between 1 and 5.");
             }
         } catch (Exception e) {
-            // Manejar entradas no numéricas o errores en Scanner
+            
             System.out.println("Invalid input. Please enter a valid number.");
-            scanner.nextLine(); // Limpiar el buffer de entrada
+            scanner.nextLine(); 
         }
     }
 }
 
 
-    // Guardar los datos en archivo
+    
     private void saveData() {
         FileManager.saveAdministrator(admin, "admin.json");
         System.out.println("Data saved successfully.");
     }
 
-    // Cargar los datos desde archivo
+    
     private void loadData() {
         admin = FileManager.loadAdministrator("admin.json");
         System.out.println("Data loaded successfully.");
     }
 
-    // Login de Residente
+    
     private void residentLogin() {
         System.out.print("Enter Resident ID: ");
         String id = scanner.nextLine();
-        currentResident = admin.findResidentById(id); // Buscar residente por ID
+        currentResident = admin.findResidentById(id); 
 
         if (currentResident != null) {
             System.out.println("Welcome, " + currentResident.getName());
@@ -86,7 +86,7 @@ public void displayMainMenu() {
         }
     }
 
-    // Menú del Residente
+    
     private void residentMenu() {
         while (true) {
             System.out.println("\n********** Resident Menu **********");
@@ -114,7 +114,7 @@ public void displayMainMenu() {
         }
     }
 
-    // Generar la factura del residente
+    
     private void generateResidentUtilityBill() {
         if (currentResident == null) {
             System.out.println("You must log in to generate a utility bill.");
@@ -133,7 +133,7 @@ public void displayMainMenu() {
         System.out.println("Utility bill generated successfully.");
     }
 
-    // Ver información personal del residente
+    
     private void viewPersonalInformation() {
         System.out.println("\nPersonal Information:");
         System.out.println("ID: " + currentResident.getId());
@@ -141,7 +141,7 @@ public void displayMainMenu() {
         System.out.println("Phone: " + currentResident.getPhone());
     }
 
-    // Menú del Administrador
+    
     private void adminMenu() {
         while (true) {
             System.out.println("\n********** Admin Menu **********");
@@ -195,7 +195,7 @@ public void displayMainMenu() {
         }
     }
 
-    // Generar factura para un residente específico
+    
     private void generateUtilityBill() {
         System.out.print("Enter Resident ID to generate the bill for: ");
         String residentId = scanner.nextLine();
