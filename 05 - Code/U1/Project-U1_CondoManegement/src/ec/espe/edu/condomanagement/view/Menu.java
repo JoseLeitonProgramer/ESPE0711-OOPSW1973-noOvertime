@@ -1,4 +1,4 @@
-    package ec.espe.edu.condomanagement.view;
+package ec.espe.edu.condomanagement.view;
 
 import ec.espe.edu.condomanagement.model.Administrator;
 import ec.espe.edu.condomanagement.model.Resident;
@@ -7,19 +7,18 @@ import ec.espe.edu.condomanagement.model.Vehicle;
 import ec.espe.edu.condomanagement.model.Payment;
 import ec.espe.edu.condomanagement.model.AreaReservation;
 import utils.FileManager;
-
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Scanner;
 
 public class Menu {
 
-    private static Scanner scanner = new Scanner(System.in);
+    private static final Scanner scanner = new Scanner(System.in);
     private static Administrator admin;
     private static Resident currentResident;  
 
   
-    public Menu() {
+    public  Menu() {
         admin = FileManager.loadAdministrator("admin.json");
     }
 
@@ -89,6 +88,7 @@ public void displayMainMenu() {
     
     private void residentMenu() {
         while (true) {
+            try {
             System.out.println("\n********** Resident Menu **********");
             System.out.println("1. View Personal Information");
             System.out.println("2. Generate Utility Bill");
@@ -98,22 +98,23 @@ public void displayMainMenu() {
             scanner.nextLine();
 
             switch (option) {
-                case 1:
-                    viewPersonalInformation();
-                    break;
-                case 2:
-                    generateResidentUtilityBill();
-                    break;
-                case 3:
+                case 1 -> viewPersonalInformation();
+                case 2 -> generateResidentUtilityBill();
+                case 3 -> {
                     currentResident = null;
                     System.out.println("Logged out successfully.");
                     return;
-                default:
-                    System.out.println("Invalid choice.");
+                }
+                default -> System.out.println("Invalid choice.");
             }
+        } catch (Exception e) {
+            
+            System.out.println("Invalid input. Please enter a valid number.");
+            scanner.nextLine(); 
         }
     }
-
+}
+    
     
     private void generateResidentUtilityBill() {
         if (currentResident == null) {
@@ -144,6 +145,7 @@ public void displayMainMenu() {
     
     private void adminMenu() {
         while (true) {
+            try {
             System.out.println("\n********** Admin Menu **********");
             System.out.println("1. Manage Residents");
             System.out.println("2. Manage Vehicles");
@@ -160,40 +162,28 @@ public void displayMainMenu() {
             scanner.nextLine();
 
             switch (option) {
-                case 1:
-                    manageResidents();
-                    break;
-                case 2:
-                    manageVehicles();
-                    break;
-                case 3:
-                    generateUtilityBill();
-                    break;
-                case 4:
-                    processPayments();
-                    break;
-                case 5:
-                    manageAreaReservations();
-                    break;
-                case 6:
-                    admin.displayAllResidents();
-                    break;
-                case 7:
-                    admin.displayAllVehicles();
-                    break;
-                case 8:
-                    admin.displayAllUtilityBills();
-                    break;
-                case 9:
-                    admin.displayAllPayments();
-                    break;
-                case 10:
+                case 1 -> manageResidents();
+                case 2 -> manageVehicles();
+                case 3 -> generateUtilityBill();
+                case 4 -> processPayments();
+                case 5 -> manageAreaReservations();
+                case 6 -> admin.displayAllResidents();
+                case 7 -> admin.displayAllVehicles();
+                case 8 -> admin.displayAllUtilityBills();
+                case 9 -> admin.displayAllPayments();
+                case 10 -> {
                     return;
-                default:
-                    System.out.println("Invalid option.");
-            }
-        }
+                }
+                default -> System.out.println("Invalid option.");
+            } 
+        } catch (Exception e) {
+            
+            System.out.println("Invalid input. Please enter a valid number.");
+            scanner.nextLine(); 
     }
+ }
+    }
+        
 
     
     private void generateUtilityBill() {
@@ -237,16 +227,11 @@ public void displayMainMenu() {
         scanner.nextLine();
 
         switch (option) {
-            case 1:
-                addResident();
-                break;
-            case 2:
-                removeResident();
-                break;
-            default:
-                System.out.println("Invalid option.");
+            case 1 -> addResident();
+            case 2 -> removeResident();
+            default -> System.out.println("Invalid option.");
         }
-    }
+    } 
 
     // Agregar un residente
     private void addResident() {
