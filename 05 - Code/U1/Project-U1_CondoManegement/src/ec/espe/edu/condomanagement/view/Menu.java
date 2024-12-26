@@ -38,15 +38,20 @@ public class Menu {
                 scanner.nextLine();
 
                 switch (option) {
-                    case 1 -> adminMenu();
-                    case 2 -> residentLogin();
-                    case 3 -> saveData();
-                    case 4 -> loadData();
+                    case 1 ->
+                        adminMenu();
+                    case 2 ->
+                        residentLogin();
+                    case 3 ->
+                        saveData();
+                    case 4 ->
+                        loadData();
                     case 5 -> {
                         System.out.println("Exiting... Goodbye!");
                         return;
                     }
-                    default -> System.out.println("Invalid option. Please select a number between 1 and 5.");
+                    default ->
+                        System.out.println("Invalid option. Please select a number between 1 and 5.");
                 }
             } catch (Exception e) {
                 System.out.println("Invalid input. Please enter a valid number.");
@@ -65,11 +70,10 @@ public class Menu {
         System.out.println("Data loaded successfully.");
     }
 
-    
     private void residentLogin() {
         System.out.print("Enter Resident ID: ");
         String id = scanner.nextLine();
-        currentResident = admin.findResidentById(id); 
+        currentResident = admin.findResidentById(id);
 
         if (currentResident != null) {
             System.out.println("Welcome, " + currentResident.getName());
@@ -79,37 +83,38 @@ public class Menu {
         }
     }
 
-    
     private void residentMenu() {
         while (true) {
             try {
-            System.out.println("\n********** Resident Menu **********");
-            System.out.println("1. View Personal Information");
-            System.out.println("2. Generate Utility Bill");
-            System.out.println("3. Logout");
-            System.out.print("Select an option: ");
-            int option = scanner.nextInt();
-            scanner.nextLine();
+                System.out.println("\n********** Resident Menu **********");
+                System.out.println("1. View Personal Information");
+                System.out.println("2. Generate Utility Bill");
+                System.out.println("3. Logout");
+                System.out.print("Select an option: ");
+                int option = scanner.nextInt();
+                scanner.nextLine();
 
-            switch (option) {
-                case 1 -> viewPersonalInformation();
-                case 2 -> generateResidentUtilityBill();
-                case 3 -> {
-                    currentResident = null;
-                    System.out.println("Logged out successfully.");
-                    return;
+                switch (option) {
+                    case 1 ->
+                        viewPersonalInformation();
+                    case 2 ->
+                        generateResidentUtilityBill();
+                    case 3 -> {
+                        currentResident = null;
+                        System.out.println("Logged out successfully.");
+                        return;
+                    }
+                    default ->
+                        System.out.println("Invalid choice.");
                 }
-                default -> System.out.println("Invalid choice.");
+            } catch (Exception e) {
+
+                System.out.println("Invalid input. Please enter a valid number.");
+                scanner.nextLine();
             }
-        } catch (Exception e) {
-            
-            System.out.println("Invalid input. Please enter a valid number.");
-            scanner.nextLine(); 
         }
     }
-}
-    
-    
+
     private void generateResidentUtilityBill() {
         if (currentResident == null) {
             System.out.println("You must log in to generate a utility bill.");
@@ -128,7 +133,6 @@ public class Menu {
         System.out.println("Utility bill generated successfully.");
     }
 
-    
     private void viewPersonalInformation() {
         System.out.println("\nPersonal Information:");
         System.out.println("ID: " + currentResident.getId());
@@ -136,50 +140,57 @@ public class Menu {
         System.out.println("Phone: " + currentResident.getPhone());
     }
 
-    
     private void adminMenu() {
         while (true) {
             try {
-            System.out.println("\n********** Admin Menu **********");
-            System.out.println("1. Manage Residents");
-            System.out.println("2. Manage Vehicles");
-            System.out.println("3. Generate Utility Bill");
-            System.out.println("4. Process Payment");
-            System.out.println("5. Manage Area Reservations");
-            System.out.println("6. View All Residents");
-            System.out.println("7. View All Vehicles");
-            System.out.println("8. View All Utility Bills");
-            System.out.println("9. View All Payments");
-            System.out.println("10. Logout");
-            System.out.print("Select an option: ");
-            int option = scanner.nextInt();
-            scanner.nextLine();
+                System.out.println("\n********** Admin Menu **********");
+                System.out.println("1. Manage Residents");
+                System.out.println("2. Manage Vehicles");
+                System.out.println("3. Generate Utility Bill");
+                System.out.println("4. Process Payment");
+                System.out.println("5. Manage Area Reservations");
+                System.out.println("6. View All Residents");
+                System.out.println("7. View All Vehicles");
+                System.out.println("8. View All Utility Bills");
+                System.out.println("9. View All Payments");
+                System.out.println("10. Logout");
+                System.out.print("Select an option: ");
+                int option = scanner.nextInt();
+                scanner.nextLine();
 
-            switch (option) {
-                case 1 -> manageResidents();
-                case 2 -> manageVehicles();
-                case 3 -> generateUtilityBill();
-                case 4 -> processPayments();
-                case 5 -> manageAreaReservations();
-                case 6 -> admin.displayAllResidents();
-                case 7 -> admin.displayAllVehicles();
-                case 8 -> admin.displayAllUtilityBills();
-                case 9 -> admin.displayAllPayments();
-                case 10 -> {
-                    return;
+                switch (option) {
+                    case 1 ->
+                        manageResidents();
+                    case 2 ->
+                        manageVehicles();
+                    case 3 ->
+                        generateUtilityBill();
+                    case 4 ->
+                        processPayments();
+                    case 5 ->
+                        manageAreaReservations();
+                    case 6 ->
+                        admin.displayAllResidents();
+                    case 7 ->
+                        admin.displayAllVehicles();
+                    case 8 ->
+                        admin.displayAllUtilityBills();
+                    case 9 ->
+                        admin.displayAllPayments();
+                    case 10 -> {
+                        return;
+                    }
+                    default ->
+                        System.out.println("Invalid option.");
                 }
-                default -> System.out.println("Invalid option.");
-            } 
-        } catch (Exception e) {
-            
-            System.out.println("Invalid input. Please enter a valid number.");
-            scanner.nextLine(); 
-    }
- }
-    }
-        
+            } catch (Exception e) {
 
-    
+                System.out.println("Invalid input. Please enter a valid number.");
+                scanner.nextLine();
+            }
+        }
+    }
+
     private void generateUtilityBill() {
         System.out.print("Enter Resident ID to generate the bill for: ");
         String residentId = scanner.nextLine();
@@ -221,24 +232,56 @@ public class Menu {
         scanner.nextLine();
 
         switch (option) {
-            case 1 -> addResident();
-            case 2 -> removeResident();
-            default -> System.out.println("Invalid option.");
+            case 1 ->
+                addResident();
+            case 2 ->
+                removeResident();
+            default ->
+                System.out.println("Invalid option.");
         }
-    } 
+    }
 
-    // Agregar un residente
+// Excepción personalizada para IDs inválidos
+    class InvalidResidentIdException extends Exception {
+
+        public InvalidResidentIdException(String message) {
+            super(message);
+        }
+    }
+
+// Modificación del método addResident para validar el ID
     private void addResident() {
-        System.out.print("Enter Resident ID: ");
-        String id = scanner.nextLine();
-        System.out.print("Enter Resident Name: ");
-        String name = scanner.nextLine();
-        System.out.print("Enter Resident Phone: ");
-        String phone = scanner.nextLine();
+        try {
+            System.out.print("Enter Resident ID: ");
+            String id = scanner.nextLine();
 
-        Resident resident = new Resident(id, name, phone);
-        admin.addResident(resident);
-        System.out.println("Resident added successfully.");
+            // Validar el ID
+            validateResidentId(id);
+
+            System.out.print("Enter Resident Name: ");
+            String name = scanner.nextLine();
+            System.out.print("Enter Resident Phone: ");
+            String phone = scanner.nextLine();
+
+            Resident resident = new Resident(id, name, phone);
+            admin.addResident(resident);
+            System.out.println("Resident added successfully.");
+        } catch (InvalidResidentIdException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+// Método para validar el ID del residente
+    private void validateResidentId(String id) throws InvalidResidentIdException {
+        if (id == null || id.trim().isEmpty()) {
+            throw new InvalidResidentIdException("Resident ID cannot be empty. Please enter a valid ID.");
+        }
+        if (!id.matches("[A-Za-z0-9]+")) {
+            throw new InvalidResidentIdException("Resident ID must contain only alphanumeric characters.");
+        }
+        if (id.length() < 5) {
+            throw new InvalidResidentIdException("Resident ID must be at least 5 characters long.");
+        }
     }
 
     // Eliminar un residente
@@ -263,48 +306,49 @@ public class Menu {
         System.out.println("Vehicle added successfully.");
     }
 
-        private void manageAreaReservations() {
-           System.out.print("Enter Resident ID for Reservation: ");
-           String residentId = scanner.nextLine();
-           Resident resident = admin.findResidentById(residentId);
+    private void manageAreaReservations() {
+        System.out.print("Enter Resident ID for Reservation: ");
+        String residentId = scanner.nextLine();
+        Resident resident = admin.findResidentById(residentId);
 
-           if (resident == null) {
-               System.out.println("Resident ID not found.");
-               return;
-           }
+        if (resident == null) {
+            System.out.println("Resident ID not found.");
+            return;
+        }
 
-           System.out.print("Enter Area Name: ");
-           String area = scanner.nextLine();
-           System.out.print("Enter Reservation Date (yyyy-MM-dd): ");
-           String dateString = scanner.nextLine();
+        System.out.print("Enter Area Name: ");
+        String area = scanner.nextLine();
+        System.out.print("Enter Reservation Date (yyyy-MM-dd): ");
+        String dateString = scanner.nextLine();
 
-           try {
-               Date reservationDate = validateReservationDate(dateString);
-               AreaReservation reservation = new AreaReservation("AR" + System.currentTimeMillis(), resident, area, reservationDate, "10:00AM");
-               resident.addReservation(reservation);
-               System.out.println("Area reservation created successfully.");
-           } catch (InvalidReservationDateException | ParseException e) {
-               System.out.println(e.getMessage());
-           }
-       }
+        try {
+            Date reservationDate = validateReservationDate(dateString);
+            AreaReservation reservation = new AreaReservation("AR" + System.currentTimeMillis(), resident, area, reservationDate, "10:00AM");
+            resident.addReservation(reservation);
+            System.out.println("Area reservation created successfully.");
+        } catch (InvalidReservationDateException | ParseException e) {
+            System.out.println(e.getMessage());
+        }
+    }
 
-       private Date validateReservationDate(String dateString) throws InvalidReservationDateException, ParseException {
-           SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-           dateFormat.setLenient(false);
-           Date reservationDate = dateFormat.parse(dateString);
+    private Date validateReservationDate(String dateString) throws InvalidReservationDateException, ParseException {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        dateFormat.setLenient(false);
+        Date reservationDate = dateFormat.parse(dateString);
 
-           if (reservationDate.before(new Date())) {
-               throw new InvalidReservationDateException("Reservation date cannot be in the past.");
-           }
+        if (reservationDate.before(new Date())) {
+            throw new InvalidReservationDateException("Reservation date cannot be in the past.");
+        }
 
-           return reservationDate;
-       }
+        return reservationDate;
+    }
 
-       // Excepción personalizada para fechas inválidas
-       static class InvalidReservationDateException extends Exception {
-           public InvalidReservationDateException(String message) {
-               super(message);
-           }
-       }
+    // Excepción personalizada para fechas inválidas
+    static class InvalidReservationDateException extends Exception {
+
+        public InvalidReservationDateException(String message) {
+            super(message);
+        }
+    }
 
 }
