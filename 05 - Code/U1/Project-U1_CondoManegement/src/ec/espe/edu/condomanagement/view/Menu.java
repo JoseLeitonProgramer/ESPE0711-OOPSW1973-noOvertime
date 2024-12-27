@@ -11,6 +11,7 @@ import utils.FileManager;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Menu {
@@ -115,23 +116,53 @@ public class Menu {
         }
     }
 
-    private void generateResidentUtilityBill() {
-        if (currentResident == null) {
-            System.out.println("You must log in to generate a utility bill.");
-            return;
+private void generateResidentUtilityBill() {
+    try {
+        System.out.print("Enter Resident ID to generate the bill for: ");
+        String residentId = scanner.nextLine();
+        Resident resident = admin.findResidentById(residentId);
+
+        if (resident == null) {
+            System.out.println("Resident not found. Please verify the ID.");
+            return; // Salimos si el residente no se encuentra
         }
 
         System.out.print("Enter Utility Bill ID: ");
         String billId = scanner.nextLine();
-        System.out.print("Enter Amount: ");
-        float amount = scanner.nextFloat();
-        scanner.nextLine();
 
-        UtilityBill newBill = new UtilityBill(billId, currentResident, amount);
-        admin.addUtilityBill(newBill);
+        float amount = -1;
 
-        System.out.println("Utility bill generated successfully.");
+        // Usamos un ciclo infinito while(true) para continuar pidiendo el monto hasta que sea válido
+        while (true) {
+            try {
+                System.out.print("Enter Amount: ");
+                amount = scanner.nextFloat();
+                scanner.nextLine(); // Consumir el salto de línea después de nextFloat()
+
+                // Verificamos si el monto es negativo
+                if (amount < 0) {
+                    System.out.println("Invalid input. Amount cannot be negative. Please try again.");
+                                // Continúa el ciclo si el monto es negativo
+                } else {
+                    break; // Si el monto es válido, salimos del ciclo
+                }
+            } catch (InputMismatchException e) {
+                // Si la entrada no es un número válido, mostramos un mensaje de error
+                System.out.println("Invalid input. Please enter a valid number.");
+                scanner.nextLine(); // Consumir la entrada inválida
+            }
+        }
+
+        // Si llegamos aquí, significa que el monto es válido
+        UtilityBill bill = new UtilityBill(billId, resident, amount);
+        admin.addUtilityBill(bill); // Método para agregar la factura al sistema
+
+        System.out.println("Utility bill successfully added for: " + resident.getName());
+
+    } catch (Exception e) {
+        System.out.println("Unexpected error: " + e.getMessage());
     }
+}
 
     private void viewPersonalInformation() {
         System.out.println("\nPersonal Information:");

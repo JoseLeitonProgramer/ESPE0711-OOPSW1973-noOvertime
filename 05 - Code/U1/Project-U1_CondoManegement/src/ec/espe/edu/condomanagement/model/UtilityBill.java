@@ -1,23 +1,24 @@
 package ec.espe.edu.condomanagement.model;
 
 import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import utils.JsonUtil;
 
 public class UtilityBill {
     private String billId; // Identificador de la factura
-    private Resident resident;
-    private float amount;
-    private Date dueDate;
-    private String status;
+    private Resident resident; // Residente asociado a la factura
+    private float amount; // Monto de la factura
+    private Date dueDate; // Fecha de vencimiento
+    private String status; // Estado de la factura
 
     // Constructor con validación para asignar el residente
     public UtilityBill(String billId, Resident resident, float amount) {
         if (resident == null) {
             throw new IllegalArgumentException("Resident cannot be null");
+        }
+        if (amount < 0) {
+            throw new IllegalArgumentException("Amount cannot be negative");
         }
         this.billId = billId;
         this.resident = resident;
@@ -30,6 +31,9 @@ public class UtilityBill {
     public UtilityBill(String billId, Resident resident, float amount, Date dueDate, String status) {
         if (resident == null) {
             throw new IllegalArgumentException("Resident cannot be null");
+        }
+        if (amount < 0) {
+            throw new IllegalArgumentException("Amount cannot be negative");
         }
         this.billId = billId;
         this.resident = resident;
@@ -69,11 +73,11 @@ public class UtilityBill {
         JsonUtil.saveToJson(filePath, jsonObject);
     }
 
-    public static Resident load(String filePath) {
-    JSONObject defaultObject = new Resident("defaultId", "defaultName", "defaultPhone").toJson();
-    JSONObject jsonObject = JsonUtil.readFromJson(filePath, defaultObject);
-    return Resident.fromJson(jsonObject);
-}
+    public static UtilityBill load(String filePath) {
+        JSONObject defaultObject = new UtilityBill("defaultBillId", new Resident("defaultId", "defaultName", "defaultPhone"), 0).toJson();
+        JSONObject jsonObject = JsonUtil.readFromJson(filePath, defaultObject);
+        return UtilityBill.fromJson(jsonObject);
+    }
 
     // Métodos de la clase original
     public String getBillId() {
@@ -85,6 +89,9 @@ public class UtilityBill {
     }
 
     public void setAmount(float amount) {
+        if (amount < 0) {
+            throw new IllegalArgumentException("Amount cannot be negative");
+        }
         this.amount = amount;
     }
 

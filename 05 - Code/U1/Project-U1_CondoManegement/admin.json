@@ -1,1 +1,1 @@
-{"payments":[],"adminId":"A1","name":"Admin","residents":[],"vehicles":[],"areaReservations":[],"utilityBills":[]}
+{"payments":[],"adminId":"A1","name":"Admin","residents":[{"reservations":[],"phone":"09635033","utilityBill":null,"name":"DAVID","id":"12345"}],"vehicles":[],"areaReservations":[],"utilityBills":[]}
