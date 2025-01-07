@@ -7,7 +7,6 @@ import ec.espe.edu.condomanagement.model.Vehicle;
 import ec.espe.edu.condomanagement.model.Payment;
 import ec.espe.edu.condomanagement.model.AreaReservation;
 import utils.FileManager;
-
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -280,13 +279,11 @@ private void generateResidentUtilityBill() {
         }
     }
 
-// Modificación del método addResident para validar el ID
     private void addResident() {
         try {
             System.out.print("Enter Resident ID: ");
             String id = scanner.nextLine();
 
-            // Validar el ID
             validateResidentId(id);
 
             System.out.print("Enter Resident Name: ");
@@ -302,7 +299,6 @@ private void generateResidentUtilityBill() {
         }
     }
 
-// Método para validar el ID del residente
     private void validateResidentId(String id) throws InvalidResidentIdException {
         if (id == null || id.trim().isEmpty()) {
             throw new InvalidResidentIdException("Resident ID cannot be empty. Please enter a valid ID.");
@@ -315,7 +311,6 @@ private void generateResidentUtilityBill() {
         }
     }
 
-    // Eliminar un residente
     private void removeResident() {
         System.out.print("Enter Resident ID to Remove: ");
         String id = scanner.nextLine();
@@ -323,7 +318,7 @@ private void generateResidentUtilityBill() {
         System.out.println("Resident removed successfully.");
     }
 
-    // Gestionar los vehículos
+
     private void manageVehicles() {
         System.out.print("Enter the Vehicle's License Plate: ");
         String licensePlate = scanner.nextLine();
@@ -374,7 +369,6 @@ private void generateResidentUtilityBill() {
         return reservationDate;
     }
 
-    // Excepción personalizada para fechas inválidas
     static class InvalidReservationDateException extends Exception {
 
         public InvalidReservationDateException(String message) {
