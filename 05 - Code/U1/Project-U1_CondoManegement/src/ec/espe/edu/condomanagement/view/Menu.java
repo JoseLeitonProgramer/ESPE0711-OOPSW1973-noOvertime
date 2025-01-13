@@ -1,5 +1,4 @@
 package ec.espe.edu.condomanagement.view;
-
 import ec.espe.edu.condomanagement.model.Administrator;
 import ec.espe.edu.condomanagement.model.Resident;
 import ec.espe.edu.condomanagement.model.UtilityBill;
@@ -131,14 +130,14 @@ private void generateResidentUtilityBill() {
 
         float amount = -1;
 
-        // Usamos un ciclo infinito while(true) para continuar pidiendo el monto hasta que sea válido
+       
         while (true) {
             try {
                 System.out.print("Enter Amount: ");
                 amount = scanner.nextFloat();
-                scanner.nextLine(); // Consumir el salto de línea después de nextFloat()
+                scanner.nextLine();
 
-                // Verificamos si el monto es negativo
+
                 if (amount < 0) {
                     System.out.println("Invalid input. Amount cannot be negative. Please try again.");
                                 // Continúa el ciclo si el monto es negativo
@@ -152,7 +151,6 @@ private void generateResidentUtilityBill() {
             }
         }
 
-        // Si llegamos aquí, significa que el monto es válido
         UtilityBill bill = new UtilityBill(billId, resident, amount);
         admin.addUtilityBill(bill); // Método para agregar la factura al sistema
 
@@ -243,7 +241,6 @@ private void generateResidentUtilityBill() {
         System.out.println("Utility bill successfully added for: " + resident.getName());
     }
 
-    // Procesar un pago
     private void processPayments() {
         System.out.print("Enter Payment Amount: ");
         float amount = scanner.nextFloat();
@@ -253,7 +250,6 @@ private void generateResidentUtilityBill() {
         System.out.println("Payment processed.");
     }
 
-    // Gestionar los residentes
     private void manageResidents() {
         System.out.println("\n1. Add Resident");
         System.out.println("2. Remove Resident");
@@ -271,7 +267,6 @@ private void generateResidentUtilityBill() {
         }
     }
 
-// Excepción personalizada para IDs inválidos
     class InvalidResidentIdException extends Exception {
 
         public InvalidResidentIdException(String message) {
