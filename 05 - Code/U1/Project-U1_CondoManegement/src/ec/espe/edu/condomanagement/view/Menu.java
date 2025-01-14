@@ -25,7 +25,7 @@ public class Menu {
     public void displayMainMenu() {
         while (true) {
             try {
-                System.out.println("********** Condo Management System **********");
+                System.out.println("*********** Condo Management System ***********");
                 System.out.println("1. Login as Admin");
                 System.out.println("2. Login as Resident");
                 System.out.println("3. Save Data");
@@ -122,7 +122,7 @@ private void generateResidentUtilityBill() {
 
         if (resident == null) {
             System.out.println("Resident not found. Please verify the ID.");
-            return; // Salimos si el residente no se encuentra
+            return; 
         }
 
         System.out.print("Enter Utility Bill ID: ");
@@ -140,7 +140,7 @@ private void generateResidentUtilityBill() {
 
                 if (amount < 0) {
                     System.out.println("Invalid input. Amount cannot be negative. Please try again.");
-                                // Continúa el ciclo si el monto es negativo
+                                
                 } else {
                     break; // Si el monto es válido, salimos del ciclo
                 }
