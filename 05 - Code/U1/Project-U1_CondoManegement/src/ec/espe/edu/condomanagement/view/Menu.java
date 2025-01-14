@@ -139,15 +139,15 @@ private void generateResidentUtilityBill() {
 
 
                 if (amount < 0) {
-                    System.out.println("Invalid input. Amount cannot be negative. Please try again.");
+                    System.out.println("Invalid input, amount cannot be negative. Please try again.");
                                 
                 } else {
-                    break; // Si el monto es válido, salimos del ciclo
+                    break; 
                 }
             } catch (InputMismatchException e) {
-                // Si la entrada no es un número válido, mostramos un mensaje de error
-                System.out.println("Invalid input. Please enter a valid number.");
-                scanner.nextLine(); // Consumir la entrada inválida
+               
+                System.out.println("Invalid input, please enter a valid number.");
+                scanner.nextLine(); 
             }
         }
 
@@ -171,7 +171,7 @@ private void generateResidentUtilityBill() {
     private void adminMenu() {
         while (true) {
             try {
-                System.out.println("\n********** Admin Menu **********");
+                System.out.println("\n*********** Admin Menu ***********");
                 System.out.println("1. Manage Residents");
                 System.out.println("2. Manage Vehicles");
                 System.out.println("3. Generate Utility Bill");
