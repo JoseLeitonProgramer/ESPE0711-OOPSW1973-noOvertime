@@ -86,7 +86,7 @@ public class Menu {
         while (true) {
             try {
                 System.out.println("\n********** Resident Menu **********");
-                System.out.println("1. View Personal Information");
+                System.out.println("1. View My Personal Information");
                 System.out.println("2. Generate Utility Bill");
                 System.out.println("3. Logout");
                 System.out.print("Select an option: ");
@@ -108,7 +108,7 @@ public class Menu {
                 }
             } catch (Exception e) {
 
-                System.out.println("Invalid input. Please enter a valid number.");
+                System.out.println("Invalid input. Please enter a valid number between 1 and 3.");
                 scanner.nextLine();
             }
         }
@@ -152,7 +152,7 @@ private void generateResidentUtilityBill() {
         }
 
         UtilityBill bill = new UtilityBill(billId, resident, amount);
-        admin.addUtilityBill(bill); // Método para agregar la factura al sistema
+        admin.addUtilityBill(bill); 
 
         System.out.println("Utility bill successfully added for: " + resident.getName());
 
@@ -213,7 +213,7 @@ private void generateResidentUtilityBill() {
                 }
             } catch (Exception e) {
 
-                System.out.println("Invalid input. Please enter a valid number.");
+                System.out.println("Invalid input. Please enter a valid number between 1 and 10.");
                 scanner.nextLine();
             }
         }
