@@ -1,5 +1,4 @@
 package ec.espe.edu.condomanagement.view;
-
 import ec.espe.edu.condomanagement.model.Administrator;
 import ec.espe.edu.condomanagement.model.Resident;
 import ec.espe.edu.condomanagement.model.UtilityBill;
@@ -7,7 +6,6 @@ import ec.espe.edu.condomanagement.model.Vehicle;
 import ec.espe.edu.condomanagement.model.Payment;
 import ec.espe.edu.condomanagement.model.AreaReservation;
 import utils.FileManager;
-
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -27,7 +25,7 @@ public class Menu {
     public void displayMainMenu() {
         while (true) {
             try {
-                System.out.println("********** Condo Management System **********");
+                System.out.println("*********** Condo Management System ***********");
                 System.out.println("1. Login as Admin");
                 System.out.println("2. Login as Resident");
                 System.out.println("3. Save Data");
@@ -88,7 +86,7 @@ public class Menu {
         while (true) {
             try {
                 System.out.println("\n********** Resident Menu **********");
-                System.out.println("1. View Personal Information");
+                System.out.println("1. View My Personal Information");
                 System.out.println("2. Generate Utility Bill");
                 System.out.println("3. Logout");
                 System.out.print("Select an option: ");
@@ -110,7 +108,7 @@ public class Menu {
                 }
             } catch (Exception e) {
 
-                System.out.println("Invalid input. Please enter a valid number.");
+                System.out.println("Invalid input. Please enter a valid number between 1 and 3.");
                 scanner.nextLine();
             }
         }
@@ -124,7 +122,7 @@ private void generateResidentUtilityBill() {
 
         if (resident == null) {
             System.out.println("Resident not found. Please verify the ID.");
-            return; // Salimos si el residente no se encuentra
+            return; 
         }
 
         System.out.print("Enter Utility Bill ID: ");
@@ -132,30 +130,29 @@ private void generateResidentUtilityBill() {
 
         float amount = -1;
 
-        // Usamos un ciclo infinito while(true) para continuar pidiendo el monto hasta que sea válido
+       
         while (true) {
             try {
                 System.out.print("Enter Amount: ");
                 amount = scanner.nextFloat();
-                scanner.nextLine(); // Consumir el salto de línea después de nextFloat()
+                scanner.nextLine();
 
-                // Verificamos si el monto es negativo
+
                 if (amount < 0) {
-                    System.out.println("Invalid input. Amount cannot be negative. Please try again.");
-                                // Continúa el ciclo si el monto es negativo
+                    System.out.println("Invalid input, amount cannot be negative. Please try again.");
+                                
                 } else {
-                    break; // Si el monto es válido, salimos del ciclo
+                    break; 
                 }
             } catch (InputMismatchException e) {
-                // Si la entrada no es un número válido, mostramos un mensaje de error
-                System.out.println("Invalid input. Please enter a valid number.");
-                scanner.nextLine(); // Consumir la entrada inválida
+               
+                System.out.println("Invalid input, please enter a valid number.");
+                scanner.nextLine(); 
             }
         }
 
-        // Si llegamos aquí, significa que el monto es válido
         UtilityBill bill = new UtilityBill(billId, resident, amount);
-        admin.addUtilityBill(bill); // Método para agregar la factura al sistema
+        admin.addUtilityBill(bill); 
 
         System.out.println("Utility bill successfully added for: " + resident.getName());
 
@@ -174,7 +171,7 @@ private void generateResidentUtilityBill() {
     private void adminMenu() {
         while (true) {
             try {
-                System.out.println("\n********** Admin Menu **********");
+                System.out.println("\n*********** Admin Menu ***********");
                 System.out.println("1. Manage Residents");
                 System.out.println("2. Manage Vehicles");
                 System.out.println("3. Generate Utility Bill");
@@ -216,7 +213,7 @@ private void generateResidentUtilityBill() {
                 }
             } catch (Exception e) {
 
-                System.out.println("Invalid input. Please enter a valid number.");
+                System.out.println("Invalid input. Please enter a valid number between 1 and 10.");
                 scanner.nextLine();
             }
         }
@@ -244,7 +241,6 @@ private void generateResidentUtilityBill() {
         System.out.println("Utility bill successfully added for: " + resident.getName());
     }
 
-    // Procesar un pago
     private void processPayments() {
         System.out.print("Enter Payment Amount: ");
         float amount = scanner.nextFloat();
@@ -254,7 +250,6 @@ private void generateResidentUtilityBill() {
         System.out.println("Payment processed.");
     }
 
-    // Gestionar los residentes
     private void manageResidents() {
         System.out.println("\n1. Add Resident");
         System.out.println("2. Remove Resident");
@@ -272,7 +267,6 @@ private void generateResidentUtilityBill() {
         }
     }
 
-// Excepción personalizada para IDs inválidos
     class InvalidResidentIdException extends Exception {
 
         public InvalidResidentIdException(String message) {
@@ -280,13 +274,11 @@ private void generateResidentUtilityBill() {
         }
     }
 
-// Modificación del método addResident para validar el ID
     private void addResident() {
         try {
             System.out.print("Enter Resident ID: ");
             String id = scanner.nextLine();
 
-            // Validar el ID
             validateResidentId(id);
 
             System.out.print("Enter Resident Name: ");
@@ -302,7 +294,6 @@ private void generateResidentUtilityBill() {
         }
     }
 
-// Método para validar el ID del residente
     private void validateResidentId(String id) throws InvalidResidentIdException {
         if (id == null || id.trim().isEmpty()) {
             throw new InvalidResidentIdException("Resident ID cannot be empty. Please enter a valid ID.");
@@ -315,7 +306,6 @@ private void generateResidentUtilityBill() {
         }
     }
 
-    // Eliminar un residente
     private void removeResident() {
         System.out.print("Enter Resident ID to Remove: ");
         String id = scanner.nextLine();
@@ -323,7 +313,7 @@ private void generateResidentUtilityBill() {
         System.out.println("Resident removed successfully.");
     }
 
-    // Gestionar los vehículos
+
     private void manageVehicles() {
         System.out.print("Enter the Vehicle's License Plate: ");
         String licensePlate = scanner.nextLine();
@@ -374,7 +364,6 @@ private void generateResidentUtilityBill() {
         return reservationDate;
     }
 
-    // Excepción personalizada para fechas inválidas
     static class InvalidReservationDateException extends Exception {
 
         public InvalidReservationDateException(String message) {

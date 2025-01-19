@@ -9,7 +9,7 @@ public class PrjCondoManagement {
 
 
 
-        Menu menu = new Menu();  // Crear una instancia de la clase Menu
-        menu.displayMainMenu();  // Mostrar el menú principal
+        Menu menu = new Menu();  
+        menu.displayMainMenu();  
     }
 }
