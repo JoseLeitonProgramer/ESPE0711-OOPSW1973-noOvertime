@@ -37,7 +37,7 @@ public class FrmInvoice extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         txtAmountToPay = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        btnCalculatePayment = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         btnNext = new javax.swing.JButton();
         btnCancel = new javax.swing.JButton();
@@ -96,11 +96,11 @@ public class FrmInvoice extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("Helvetica Neue", 0, 48)); // NOI18N
         jLabel6.setText("$");
 
-        jButton1.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
-        jButton1.setText("CALCULATE PAYMENT");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnCalculatePayment.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
+        btnCalculatePayment.setText("CALCULATE PAYMENT");
+        btnCalculatePayment.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnCalculatePaymentActionPerformed(evt);
             }
         });
 
@@ -135,7 +135,7 @@ public class FrmInvoice extends javax.swing.JFrame {
                     .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(btnCalculatePayment, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26))
@@ -158,7 +158,7 @@ public class FrmInvoice extends javax.swing.JFrame {
                                     .addComponent(cmbConcept, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel2))))
                         .addGap(18, 18, 18)
-                        .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnCalculatePayment, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel5)
                         .addGap(18, 18, 18)
@@ -255,9 +255,9 @@ public class FrmInvoice extends javax.swing.JFrame {
     System.exit(0);
     }//GEN-LAST:event_btnCancelActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnCalculatePaymentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCalculatePaymentActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnCalculatePaymentActionPerformed
 
     /**
      * @param args the command line arguments
@@ -295,10 +295,10 @@ public class FrmInvoice extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCalculatePayment;
     private javax.swing.JButton btnCancel;
     private javax.swing.JButton btnNext;
     private javax.swing.JComboBox<String> cmbConcept;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
