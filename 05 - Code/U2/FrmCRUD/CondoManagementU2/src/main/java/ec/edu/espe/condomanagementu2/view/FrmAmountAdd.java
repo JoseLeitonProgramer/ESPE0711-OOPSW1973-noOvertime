@@ -1,11 +1,7 @@
+package ec.edu.espe.condomanagementu2.view;
+
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
-package ec.edu.espe.condomanagementu2.view;
 
 /**
  *
@@ -43,7 +39,7 @@ public class FrmAmountAdd extends javax.swing.JFrame {
         jTextField8 = new javax.swing.JTextField();
         jTextField9 = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblAmounts = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jButton2 = new javax.swing.JButton();
@@ -81,7 +77,7 @@ public class FrmAmountAdd extends javax.swing.JFrame {
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel6.setText("Parking Lot:");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblAmounts.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
                 {null, null, null, null, null},
@@ -100,7 +96,7 @@ public class FrmAmountAdd extends javax.swing.JFrame {
                 return types [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tblAmounts);
 
         jButton1.setFont(new java.awt.Font("Helvetica Neue", 0, 48)); // NOI18N
         jButton1.setText("ADD");
@@ -226,7 +222,7 @@ public class FrmAmountAdd extends javax.swing.JFrame {
         String parkingLot = jTextField9.getText();
 
         // Add data to the table
-        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        DefaultTableModel model = (DefaultTableModel) tblAmounts.getModel();
         model.addRow(new Object[]{house, coowner, expense, tenant, parkingLot});
 
         // Clear text fields
@@ -293,11 +289,12 @@ public class FrmAmountAdd extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField7;
     private javax.swing.JTextField jTextField8;
     private javax.swing.JTextField jTextField9;
+    private javax.swing.JTable tblAmounts;
     // End of variables declaration//GEN-END:variables
+
 }

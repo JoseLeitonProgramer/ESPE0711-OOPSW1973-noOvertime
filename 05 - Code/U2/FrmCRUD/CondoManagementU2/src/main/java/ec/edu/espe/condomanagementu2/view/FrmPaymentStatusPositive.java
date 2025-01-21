@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package ec.edu.espe.condomanagementu2.view;
 
 /**
@@ -136,8 +132,8 @@ public class FrmPaymentStatusPositive extends javax.swing.JFrame {
 
     private void btnMakeAnotherPaymentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMakeAnotherPaymentActionPerformed
         // TODO add your handling code here:
-    this.setVisible(false);
-    new FrmPayment().setVisible(true);
+    //this.setVisible(false);
+    //new FrmPayment().setVisible(true);
     }//GEN-LAST:event_btnMakeAnotherPaymentActionPerformed
 
     /**

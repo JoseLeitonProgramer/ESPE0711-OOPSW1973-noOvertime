@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package ec.edu.espe.condomanagementu2.view;
 
 /**
@@ -130,8 +126,8 @@ public class FrmPaymentStatusNegative extends javax.swing.JFrame {
     this.dispose();
     // Assuming you want to go back to a previous form, you can create an instance of that form and set it visible
     // For example, if the previous form is FrmMainMenu:
-    FrmMainMenu mainMenu = new FrmMainMenu();
-    mainMenu.setVisible(true);
+    FrmMain main = new FrmMain();
+    main.setVisible(true);
     }//GEN-LAST:event_btnBackActionPerformed
 
     private void btnFinishActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFinishActionPerformed
