@@ -74,8 +74,18 @@ public class FrmPaymentStatusPositive extends javax.swing.JFrame {
         );
 
         btnFinish.setText("Finish");
+        btnFinish.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFinishActionPerformed(evt);
+            }
+        });
 
         btnMakeAnotherPayment.setText("Make Another Payment");
+        btnMakeAnotherPayment.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMakeAnotherPaymentActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -118,6 +128,14 @@ public class FrmPaymentStatusPositive extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnFinishActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFinishActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnFinishActionPerformed
+
+    private void btnMakeAnotherPaymentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMakeAnotherPaymentActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnMakeAnotherPaymentActionPerformed
 
     /**
      * @param args the command line arguments

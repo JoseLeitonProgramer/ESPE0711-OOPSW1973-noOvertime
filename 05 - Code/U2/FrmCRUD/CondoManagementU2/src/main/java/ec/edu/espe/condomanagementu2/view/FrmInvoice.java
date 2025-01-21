@@ -90,6 +90,11 @@ public class FrmInvoice extends javax.swing.JFrame {
         jLabel5.setText("Total amount to pay is");
 
         txtAmountToPay.setFont(new java.awt.Font("Helvetica Neue", 0, 48)); // NOI18N
+        txtAmountToPay.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtAmountToPayActionPerformed(evt);
+            }
+        });
 
         jLabel6.setFont(new java.awt.Font("Helvetica Neue", 0, 48)); // NOI18N
         jLabel6.setText("$");
@@ -153,8 +158,18 @@ public class FrmInvoice extends javax.swing.JFrame {
         );
 
         btnNext.setText("NEXT");
+        btnNext.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNextActionPerformed(evt);
+            }
+        });
 
         btnCancel.setText("CANCEL");
+        btnCancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -200,6 +215,18 @@ public class FrmInvoice extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void txtAmountToPayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAmountToPayActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtAmountToPayActionPerformed
+
+    private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnNextActionPerformed
+
+    private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnCancelActionPerformed
 
     /**
      * @param args the command line arguments

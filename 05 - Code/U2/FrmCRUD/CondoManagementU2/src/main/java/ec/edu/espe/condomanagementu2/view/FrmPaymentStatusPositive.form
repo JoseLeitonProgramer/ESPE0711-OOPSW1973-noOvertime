@@ -136,11 +136,17 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Finish"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnFinishActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnMakeAnotherPayment">
           <Properties>
             <Property name="text" type="java.lang.String" value="Make Another Payment"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnMakeAnotherPaymentActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
