@@ -1,15 +1,16 @@
-C:\Users\gustavo\OneDrive\Documentos\NetBeansProjects\CondoManagementU2\src\main\java\ec\edu\espe\condomanagementu2\controller\CondoManagementController.java
-C:\Users\gustavo\OneDrive\Documentos\NetBeansProjects\CondoManagementU2\src\main\java\ec\edu\espe\condomanagementu2\controller\CondoManagementU2.java
-C:\Users\gustavo\OneDrive\Documentos\NetBeansProjects\CondoManagementU2\src\main\java\ec\edu\espe\condomanagementu2\controller\ResidentDAO.java
-C:\Users\gustavo\OneDrive\Documentos\NetBeansProjects\CondoManagementU2\src\main\java\ec\edu\espe\condomanagementu2\model\Resident.java
-C:\Users\gustavo\OneDrive\Documentos\NetBeansProjects\CondoManagementU2\src\main\java\ec\edu\espe\condomanagementu2\model\Vehicle.java
-C:\Users\gustavo\OneDrive\Documentos\NetBeansProjects\CondoManagementU2\src\main\java\ec\edu\espe\condomanagementu2\view\FrmDeleteResident.java
-C:\Users\gustavo\OneDrive\Documentos\NetBeansProjects\CondoManagementU2\src\main\java\ec\edu\espe\condomanagementu2\view\FrmDeleteVehicle.java
-C:\Users\gustavo\OneDrive\Documentos\NetBeansProjects\CondoManagementU2\src\main\java\ec\edu\espe\condomanagementu2\view\FrmEditResident.java
-C:\Users\gustavo\OneDrive\Documentos\NetBeansProjects\CondoManagementU2\src\main\java\ec\edu\espe\condomanagementu2\view\FrmEditVehicle.java
-C:\Users\gustavo\OneDrive\Documentos\NetBeansProjects\CondoManagementU2\src\main\java\ec\edu\espe\condomanagementu2\view\FrmMain.java
-C:\Users\gustavo\OneDrive\Documentos\NetBeansProjects\CondoManagementU2\src\main\java\ec\edu\espe\condomanagementu2\view\FrmResident.java
-C:\Users\gustavo\OneDrive\Documentos\NetBeansProjects\CondoManagementU2\src\main\java\ec\edu\espe\condomanagementu2\view\FrmVehicle.java
-C:\Users\gustavo\OneDrive\Documentos\NetBeansProjects\CondoManagementU2\src\main\java\ec\edu\espe\condomanagementu2\view\FrmViewResident.java
-C:\Users\gustavo\OneDrive\Documentos\NetBeansProjects\CondoManagementU2\src\main\java\ec\edu\espe\condomanagementu2\view\FrmViewVehicle.java
-C:\Users\gustavo\OneDrive\Documentos\NetBeansProjects\CondoManagementU2\src\main\java\utils\MongoDBManager.java
+/Users/josecito/Desktop/proyectosGithub/ESPE0711-OOPSW1973-noOvertime/05 - Code/U2/FrmCRUD/CondoManagementU2/src/main/java/ec/edu/espe/condomanagementu2/controller/CondoManagementController.java
+/Users/josecito/Desktop/proyectosGithub/ESPE0711-OOPSW1973-noOvertime/05 - Code/U2/FrmCRUD/CondoManagementU2/src/main/java/ec/edu/espe/condomanagementu2/controller/CondoManagementU2.java
+/Users/josecito/Desktop/proyectosGithub/ESPE0711-OOPSW1973-noOvertime/05 - Code/U2/FrmCRUD/CondoManagementU2/src/main/java/ec/edu/espe/condomanagementu2/controller/ResidentDAO.java
+/Users/josecito/Desktop/proyectosGithub/ESPE0711-OOPSW1973-noOvertime/05 - Code/U2/FrmCRUD/CondoManagementU2/src/main/java/ec/edu/espe/condomanagementu2/model/Resident.java
+/Users/josecito/Desktop/proyectosGithub/ESPE0711-OOPSW1973-noOvertime/05 - Code/U2/FrmCRUD/CondoManagementU2/src/main/java/ec/edu/espe/condomanagementu2/model/Vehicle.java
+/Users/josecito/Desktop/proyectosGithub/ESPE0711-OOPSW1973-noOvertime/05 - Code/U2/FrmCRUD/CondoManagementU2/src/main/java/ec/edu/espe/condomanagementu2/view/FrmDeleteResident.java
+/Users/josecito/Desktop/proyectosGithub/ESPE0711-OOPSW1973-noOvertime/05 - Code/U2/FrmCRUD/CondoManagementU2/src/main/java/ec/edu/espe/condomanagementu2/view/FrmDeleteVehicle.java
+/Users/josecito/Desktop/proyectosGithub/ESPE0711-OOPSW1973-noOvertime/05 - Code/U2/FrmCRUD/CondoManagementU2/src/main/java/ec/edu/espe/condomanagementu2/view/FrmEditResident.java
+/Users/josecito/Desktop/proyectosGithub/ESPE0711-OOPSW1973-noOvertime/05 - Code/U2/FrmCRUD/CondoManagementU2/src/main/java/ec/edu/espe/condomanagementu2/view/FrmEditVehicle.java
+/Users/josecito/Desktop/proyectosGithub/ESPE0711-OOPSW1973-noOvertime/05 - Code/U2/FrmCRUD/CondoManagementU2/src/main/java/ec/edu/espe/condomanagementu2/view/FrmInvoice.java
+/Users/josecito/Desktop/proyectosGithub/ESPE0711-OOPSW1973-noOvertime/05 - Code/U2/FrmCRUD/CondoManagementU2/src/main/java/ec/edu/espe/condomanagementu2/view/FrmMain.java
+/Users/josecito/Desktop/proyectosGithub/ESPE0711-OOPSW1973-noOvertime/05 - Code/U2/FrmCRUD/CondoManagementU2/src/main/java/ec/edu/espe/condomanagementu2/view/FrmResident.java
+/Users/josecito/Desktop/proyectosGithub/ESPE0711-OOPSW1973-noOvertime/05 - Code/U2/FrmCRUD/CondoManagementU2/src/main/java/ec/edu/espe/condomanagementu2/view/FrmVehicle.java
+/Users/josecito/Desktop/proyectosGithub/ESPE0711-OOPSW1973-noOvertime/05 - Code/U2/FrmCRUD/CondoManagementU2/src/main/java/ec/edu/espe/condomanagementu2/view/FrmViewResident.java
+/Users/josecito/Desktop/proyectosGithub/ESPE0711-OOPSW1973-noOvertime/05 - Code/U2/FrmCRUD/CondoManagementU2/src/main/java/ec/edu/espe/condomanagementu2/view/FrmViewVehicle.java
+/Users/josecito/Desktop/proyectosGithub/ESPE0711-OOPSW1973-noOvertime/05 - Code/U2/FrmCRUD/CondoManagementU2/src/main/java/utils/MongoDBManager.java
