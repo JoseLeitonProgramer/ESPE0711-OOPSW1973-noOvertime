@@ -131,10 +131,13 @@ public class FrmPaymentStatusPositive extends javax.swing.JFrame {
 
     private void btnFinishActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFinishActionPerformed
         // TODO add your handling code here:
+    System.exit(0);
     }//GEN-LAST:event_btnFinishActionPerformed
 
     private void btnMakeAnotherPaymentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMakeAnotherPaymentActionPerformed
         // TODO add your handling code here:
+    this.setVisible(false);
+    new FrmPayment().setVisible(true);
     }//GEN-LAST:event_btnMakeAnotherPaymentActionPerformed
 
     /**

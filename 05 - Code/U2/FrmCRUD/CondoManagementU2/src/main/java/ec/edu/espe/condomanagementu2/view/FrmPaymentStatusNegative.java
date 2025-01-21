@@ -127,10 +127,16 @@ public class FrmPaymentStatusNegative extends javax.swing.JFrame {
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         // TODO add your handling code here:
+    this.dispose();
+    // Assuming you want to go back to a previous form, you can create an instance of that form and set it visible
+    // For example, if the previous form is FrmMainMenu:
+    FrmMainMenu mainMenu = new FrmMainMenu();
+    mainMenu.setVisible(true);
     }//GEN-LAST:event_btnBackActionPerformed
 
     private void btnFinishActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFinishActionPerformed
         // TODO add your handling code here:
+    System.exit(0);
     }//GEN-LAST:event_btnFinishActionPerformed
 
     /**

@@ -196,14 +196,33 @@ public class FrmCard extends javax.swing.JFrame {
 
     private void txtIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdActionPerformed
         // TODO add your handling code here:
+    String id = txtId.getText();
+    // Add your handling code here
     }//GEN-LAST:event_txtIdActionPerformed
 
     private void btnPayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPayActionPerformed
         // TODO add your handling code here:
+    String name = txtName.getText();
+    String id = txtId.getText();
+    String cardNumber = txtCardNumber.getText();
+    String month = txtMonth.getText();
+    String year = txtYear.getText();
+    String cvv = txtCvv.getText();
+
+    // Perform validation
+    if (name.isEmpty() || id.isEmpty() || cardNumber.isEmpty() || month.isEmpty() || year.isEmpty() || cvv.isEmpty()) {
+        javax.swing.JOptionPane.showMessageDialog(this, "Please fill in all fields", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+        return;
+    }
+
+    // Process payment (this is a placeholder, actual implementation will depend on your payment processing logic)
+    javax.swing.JOptionPane.showMessageDialog(this, "Payment Successful", "Success", javax.swing.JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_btnPayActionPerformed
 
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
         // TODO add your handling code here:
+    this.dispose();
+    javax.swing.JOptionPane.showMessageDialog(this, "Payment Cancelled", "Cancelled", javax.swing.JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_btnCancelActionPerformed
 
     /**

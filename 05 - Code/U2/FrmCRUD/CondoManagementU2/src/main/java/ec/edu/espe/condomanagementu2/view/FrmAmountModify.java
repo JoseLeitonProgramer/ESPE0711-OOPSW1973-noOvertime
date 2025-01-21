@@ -231,18 +231,60 @@ public class FrmAmountModify extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+    JFileChooser fileChooser = new JFileChooser();
+    int returnValue = fileChooser.showOpenDialog(null);
+    if (returnValue == JFileChooser.APPROVE_OPTION) {
+        File selectedFile = fileChooser.getSelectedFile();
+        // Handle the file upload logic here
+        System.out.println("File selected: " + selectedFile.getAbsolutePath());
+    }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
+    String house = jTextField1.getText();
+    String coowner = jTextField6.getText();
+    String expense = jTextField7.getText();
+    String tenant = jTextField8.getText();
+    String parkingLot = jTextField9.getText();
+
+    // Assuming you have a method to search for the data
+    Object[][] data = findData(house, coowner, expense, tenant, parkingLot);
+
+    // Update the table model with the new data
+    jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        data,
+        new String [] {
+            "House", "Coowner", "Expense", "Tenant", "Parking"
+        }
+    ));
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
+    int selectedRow = jTable1.getSelectedRow();
+    if (selectedRow != -1) {
+        String house = jTextField1.getText();
+        String coowner = jTextField6.getText();
+        String expense = jTextField7.getText();
+        String tenant = jTextField8.getText();
+        String parkingLot = jTextField9.getText();
+
+        jTable1.setValueAt(house, selectedRow, 0);
+        jTable1.setValueAt(coowner, selectedRow, 1);
+        jTable1.setValueAt(expense, selectedRow, 2);
+        jTable1.setValueAt(tenant, selectedRow, 3);
+        jTable1.setValueAt(parkingLot, selectedRow, 4);
+
+        // Optionally, you can add code to update the data in the backend or database
+    } else {
+        JOptionPane.showMessageDialog(this, "Please select a row to modify.", "Error", JOptionPane.ERROR_MESSAGE);
+    }
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
+    System.exit(0);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     /**

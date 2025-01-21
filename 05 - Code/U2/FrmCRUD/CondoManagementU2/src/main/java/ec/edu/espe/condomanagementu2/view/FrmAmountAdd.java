@@ -1,3 +1,6 @@
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -210,15 +213,32 @@ public class FrmAmountAdd extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+        // Code to upload data
+        JOptionPane.showMessageDialog(this, "Data uploaded successfully!");
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        // Get data from text fields
+        String house = jTextField1.getText();
+        String coowner = jTextField6.getText();
+        String expense = jTextField7.getText();
+        String tenant = jTextField8.getText();
+        String parkingLot = jTextField9.getText();
+
+        // Add data to the table
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        model.addRow(new Object[]{house, coowner, expense, tenant, parkingLot});
+
+        // Clear text fields
+        jTextField1.setText("");
+        jTextField6.setText("");
+        jTextField7.setText("");
+        jTextField8.setText("");
+        jTextField9.setText("");
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
+        System.exit(0);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     /**

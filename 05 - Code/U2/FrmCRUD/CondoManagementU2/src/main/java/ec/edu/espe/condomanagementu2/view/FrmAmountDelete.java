@@ -231,18 +231,81 @@ public class FrmAmountDelete extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+        // Code to handle the upload action
+        javax.swing.JFileChooser fileChooser = new javax.swing.JFileChooser();
+        int returnValue = fileChooser.showOpenDialog(this);
+        if (returnValue == javax.swing.JFileChooser.APPROVE_OPTION) {
+            java.io.File selectedFile = fileChooser.getSelectedFile();
+            // Handle the file upload logic here
+            System.out.println("File selected: " + selectedFile.getAbsolutePath());
+        }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
+        // Code to handle the find action
+        String house = jTextField1.getText();
+        String coowner = jTextField6.getText();
+        String expense = jTextField7.getText();
+        String tenant = jTextField8.getText();
+        String parkingLot = jTextField9.getText();
+
+        // Implement the logic to find the records based on the input fields
+        // For example, you can filter the table data based on the input values
+        javax.swing.table.DefaultTableModel model = (javax.swing.table.DefaultTableModel) jTable1.getModel();
+        java.util.List<Object[]> filteredData = new java.util.ArrayList<>();
+
+        for (int i = 0; i < model.getRowCount(); i++) {
+            boolean match = true;
+            if (!house.isEmpty() && !house.equals(model.getValueAt(i, 0).toString())) {
+            match = false;
+            }
+            if (!coowner.isEmpty() && !coowner.equals(model.getValueAt(i, 1).toString())) {
+            match = false;
+            }
+            if (!expense.isEmpty() && !expense.equals(model.getValueAt(i, 2).toString())) {
+            match = false;
+            }
+            if (!tenant.isEmpty() && !tenant.equals(model.getValueAt(i, 3).toString())) {
+            match = false;
+            }
+            if (!parkingLot.isEmpty() && !parkingLot.equals(model.getValueAt(i, 4).toString())) {
+            match = false;
+            }
+            if (match) {
+            filteredData.add(new Object[]{
+                model.getValueAt(i, 0),
+                model.getValueAt(i, 1),
+                model.getValueAt(i, 2),
+                model.getValueAt(i, 3),
+                model.getValueAt(i, 4)
+            });
+            }
+        }
+
+        // Update the table with the filtered data
+        model.setRowCount(0);
+        for (Object[] rowData : filteredData) {
+            model.addRow(rowData);
+        }
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
+        int selectedRow = jTable1.getSelectedRow();
+        if (selectedRow != -1) {
+            javax.swing.table.DefaultTableModel model = (javax.swing.table.DefaultTableModel) jTable1.getModel();
+            model.removeRow(selectedRow);
+            // Optionally, you can add code here to delete the record from the database or data source
+            System.out.println("Record deleted successfully.");
+        } else {
+            System.out.println("Please select a row to delete.");
+        }
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
+        // Code to handle the exit action
+        System.exit(0);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     /**

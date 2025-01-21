@@ -218,14 +218,29 @@ public class FrmInvoice extends javax.swing.JFrame {
 
     private void txtAmountToPayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAmountToPayActionPerformed
         // TODO add your handling code here:
+    String selectedConcept = (String) cmbConcept.getSelectedItem();
+    String selectedMonth = lstMonth.getSelectedValue();
+    String selectedYear = (String) spnYear.getValue();
+    int selectedHouse = (int) spnHouse.getValue();
+    
+    // Assuming some logic to calculate the amount to pay based on the selected values
+    double amountToPay = calculateAmountToPay(selectedConcept, selectedMonth, selectedYear, selectedHouse);
+    
+    txtAmountToPay.setText(String.valueOf(amountToPay));
     }//GEN-LAST:event_txtAmountToPayActionPerformed
 
     private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
         // TODO add your handling code here:
+    // Retrieve the entered amount to pay
+    String amountToPay = txtAmountToPay.getText();
+    
+    // Display a message with the entered amount
+    javax.swing.JOptionPane.showMessageDialog(this, "The amount to pay is: $" + amountToPay);
     }//GEN-LAST:event_btnNextActionPerformed
 
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
         // TODO add your handling code here:
+    System.exit(0);
     }//GEN-LAST:event_btnCancelActionPerformed
 
     /**
