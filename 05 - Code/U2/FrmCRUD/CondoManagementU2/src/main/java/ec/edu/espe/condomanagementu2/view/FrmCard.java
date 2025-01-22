@@ -3,6 +3,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package ec.edu.espe.condomanagementu2.view;
+import ec.edu.espe.condomanagementu2.view.FrmPaymentStatusPositive;
+import ec.edu.espe.condomanagementu2.view.FrmPaymentStatusNegative;
+
 
 /**
  *
@@ -15,6 +18,38 @@ public class FrmCard extends javax.swing.JFrame {
      */
     public FrmCard() {
         initComponents();
+        // Configuración para limitar longitud y validar entrada
+    txtCardNumber.setDocument(new javax.swing.text.PlainDocument() {
+        public void insertString(int offs, String str, javax.swing.text.AttributeSet a) throws javax.swing.text.BadLocationException {
+            if (getLength() + str.length() <= 16 && str.matches("\\d+")) {
+                super.insertString(offs, str, a);
+            }
+        }
+    });
+
+    txtCvv.setDocument(new javax.swing.text.PlainDocument() {
+        public void insertString(int offs, String str, javax.swing.text.AttributeSet a) throws javax.swing.text.BadLocationException {
+            if (getLength() + str.length() <= 3 && str.matches("\\d+")) {
+                super.insertString(offs, str, a);
+            }
+        }
+    });
+
+    txtMonth.setDocument(new javax.swing.text.PlainDocument() {
+        public void insertString(int offs, String str, javax.swing.text.AttributeSet a) throws javax.swing.text.BadLocationException {
+            if (getLength() + str.length() <= 2 && str.matches("\\d+")) {
+                super.insertString(offs, str, a);
+            }
+        }
+    });
+
+    txtYear.setDocument(new javax.swing.text.PlainDocument() {
+        public void insertString(int offs, String str, javax.swing.text.AttributeSet a) throws javax.swing.text.BadLocationException {
+            if (getLength() + str.length() <= 2 && str.matches("\\d+")) {
+                super.insertString(offs, str, a);
+            }
+        }
+    });
     }
 
     /**
@@ -104,15 +139,15 @@ public class FrmCard extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(txtMonth, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtMonth, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel6)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtYear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtYear, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
                                 .addComponent(jLabel7)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtCvv, javax.swing.GroupLayout.DEFAULT_SIZE, 121, Short.MAX_VALUE))
+                                .addComponent(txtCvv, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(txtCardNumber))))
                 .addGap(6, 6, 6))
         );
@@ -201,7 +236,7 @@ public class FrmCard extends javax.swing.JFrame {
     }//GEN-LAST:event_txtIdActionPerformed
 
     private void btnPayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPayActionPerformed
-        // TODO add your handling code here:
+    // Obtener valores de los campos de texto
     String name = txtName.getText();
     String id = txtId.getText();
     String cardNumber = txtCardNumber.getText();
@@ -209,20 +244,65 @@ public class FrmCard extends javax.swing.JFrame {
     String year = txtYear.getText();
     String cvv = txtCvv.getText();
 
-    // Perform validation
+    // Validar campos vacíos
     if (name.isEmpty() || id.isEmpty() || cardNumber.isEmpty() || month.isEmpty() || year.isEmpty() || cvv.isEmpty()) {
         javax.swing.JOptionPane.showMessageDialog(this, "Please fill in all fields", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
         return;
     }
 
-    // Process payment (this is a placeholder, actual implementation will depend on your payment processing logic)
-    javax.swing.JOptionPane.showMessageDialog(this, "Payment Successful", "Success", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+    // Validar número de tarjeta (16 dígitos)
+    if (!cardNumber.matches("\\d{16}")) {
+        javax.swing.JOptionPane.showMessageDialog(this, "Card number must be 16 digits.", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+        return;
+    }
+
+    // Validar mes (MM debe estar entre 01 y 12)
+    if (!month.matches("0[1-9]|1[0-2]")) {
+        javax.swing.JOptionPane.showMessageDialog(this, "Invalid month. Enter a value between 01 and 12.", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+        return;
+    }
+
+    // Validar año (2 dígitos)
+    if (!year.matches("\\d{2}")) {
+        javax.swing.JOptionPane.showMessageDialog(this, "Invalid year. Enter the last two digits of the year.", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+        return;
+    }
+
+    // Validar CVV (3 dígitos)
+    if (!cvv.matches("\\d{3}")) {
+        javax.swing.JOptionPane.showMessageDialog(this, "CVV must be 3 digits.", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+        return;
+    }
+
+    // Aquí realizas el pago (ejemplo de validación)
+    boolean paymentSuccess = true; // Cambia esto dependiendo del resultado del pago (puedes hacer validaciones más complejas)
+
+    if (paymentSuccess) {
+        // Si el pago es exitoso, abrir FrmPaymentStatusPositive
+        FrmPaymentStatusPositive paymentSuccessWindow = new FrmPaymentStatusPositive();
+        paymentSuccessWindow.setVisible(true);
+        this.dispose(); // Cierra la ventana actual (FrmCard)
+    } else {
+        // Si el pago es rechazado, abrir FrmPaymentStatusNegative
+        FrmPaymentStatusNegative paymentFailureWindow = new FrmPaymentStatusNegative();
+        paymentFailureWindow.setVisible(true);
+        this.dispose(); // Cierra la ventana actual (FrmCard)
+    }
+
     }//GEN-LAST:event_btnPayActionPerformed
 
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
-        // TODO add your handling code here:
-    this.dispose();
-    javax.swing.JOptionPane.showMessageDialog(this, "Payment Cancelled", "Cancelled", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+        // Confirmación antes de cancelar
+    int confirm = javax.swing.JOptionPane.showConfirmDialog(this, 
+        "Are you sure you want to cancel the payment?", 
+        "Cancel Payment", 
+        javax.swing.JOptionPane.YES_NO_OPTION, 
+        javax.swing.JOptionPane.WARNING_MESSAGE);
+
+    if (confirm == javax.swing.JOptionPane.YES_OPTION) {
+        this.dispose();
+        javax.swing.JOptionPane.showMessageDialog(this, "Payment Cancelled", "Cancelled", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+    }
     }//GEN-LAST:event_btnCancelActionPerformed
 
     /**

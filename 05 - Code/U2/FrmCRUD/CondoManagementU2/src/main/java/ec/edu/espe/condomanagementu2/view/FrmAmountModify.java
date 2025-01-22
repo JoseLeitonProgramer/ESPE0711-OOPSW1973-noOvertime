@@ -1,8 +1,10 @@
 package ec.edu.espe.condomanagementu2.view;
 
+import ec.edu.espe.condomanagementu2.controller.AmountDAO;
 import java.io.File;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -15,6 +17,22 @@ public class FrmAmountModify extends javax.swing.JFrame {
      */
     public FrmAmountModify() {
         initComponents();
+
+        // Agregar un listener para cuando se haga clic en una fila de la tabla
+        tblAmounts.addMouseListener(new java.awt.event.MouseAdapter() {
+            @Override
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                int selectedRow = tblAmounts.getSelectedRow();
+                if (selectedRow != -1) {
+                    // Llenar los campos de texto con los valores de la fila seleccionada
+                    txtHouse.setText(tblAmounts.getValueAt(selectedRow, 0).toString());
+                    txtCoowner.setText(tblAmounts.getValueAt(selectedRow, 1).toString());
+                    txtExpense.setText(tblAmounts.getValueAt(selectedRow, 2).toString());
+                    txtTenant.setText(tblAmounts.getValueAt(selectedRow, 3).toString());
+                    txtParkingLot.setText(tblAmounts.getValueAt(selectedRow, 4).toString());
+                }
+            }
+        });
     }
 
     /**
@@ -233,61 +251,90 @@ public class FrmAmountModify extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnUploadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUploadActionPerformed
-        // TODO add your handling code here:
-    JFileChooser fileChooser = new JFileChooser();
-    int returnValue = fileChooser.showOpenDialog(null);
-    if (returnValue == JFileChooser.APPROVE_OPTION) {
-        File selectedFile = fileChooser.getSelectedFile();
-        // Handle the file upload logic here
-        System.out.println("File selected: " + selectedFile.getAbsolutePath());
+        try {
+        // Obtener el modelo de la tabla
+        DefaultTableModel model = (DefaultTableModel) tblAmounts.getModel();
+
+        // Cargar datos desde MongoDB
+        AmountDAO dao = new AmountDAO();
+        dao.loadAmountsToTable(model);
+
+        // Mostrar mensaje de éxito
+        JOptionPane.showMessageDialog(this, "Data uploaded successfully!");
+    } catch (Exception e) {
+        // Mostrar mensaje de error en caso de que falle la carga
+        JOptionPane.showMessageDialog(this, "Error uploading data: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
     }
     }//GEN-LAST:event_btnUploadActionPerformed
 
     private void btnFindActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFindActionPerformed
-        // TODO add your handling code here:
-    String house = txtHouse.getText();
-    String coowner = txtCoowner.getText();
-    String expense = txtExpense.getText();
-    String tenant = txtTenant.getText();
-    String parkingLot = txtParkingLot.getText();
+        // Crear una instancia del DAO
+        AmountDAO amountDAO = new AmountDAO();
 
-    // Assuming you have a method to search for the data
-    Object[][] data = findData(house, coowner, expense, tenant, parkingLot);
-
-    // Update the table model with the new data
-    tblAmounts.setModel(new javax.swing.table.DefaultTableModel(
-        data,
-        new String [] {
-            "House", "Coowner", "Expense", "Tenant", "Parking"
-        }
-    ));
-    }//GEN-LAST:event_btnFindActionPerformed
-
-    private void btnModifyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModifyActionPerformed
-        // TODO add your handling code here:
-    int selectedRow = tblAmounts.getSelectedRow();
-    if (selectedRow != -1) {
+        // Obtener los valores de los campos de texto
         String house = txtHouse.getText();
         String coowner = txtCoowner.getText();
         String expense = txtExpense.getText();
         String tenant = txtTenant.getText();
         String parkingLot = txtParkingLot.getText();
 
+        // Llamar al método de búsqueda
+        amountDAO.findAmounts((DefaultTableModel) tblAmounts.getModel(), house, coowner, expense, tenant, parkingLot);
+
+    }//GEN-LAST:event_btnFindActionPerformed
+
+
+    private void btnModifyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModifyActionPerformed
+    int selectedRow = tblAmounts.getSelectedRow();
+    if (selectedRow != -1) {
+        // Leer datos de los campos
+        String house = txtHouse.getText().trim();
+        String coowner = txtCoowner.getText().trim();
+        String expense = txtExpense.getText().trim();
+        String tenant = txtTenant.getText().trim();
+        String parkingLot = txtParkingLot.getText().trim();
+
+        // Validación de que todos los campos no estén vacíos
+        if (house.isEmpty() || coowner.isEmpty() || expense.isEmpty() || tenant.isEmpty() || parkingLot.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "All fields are required.", "Validation Error", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
+        // Conversión de expense, tenant y parkingLot a int
+        int expenseValue;
+        int tenantValue;
+        int parkingLotValue;
+
+        try {
+            expenseValue = Integer.parseInt(expense);  // Convertir el string de expense a int
+            tenantValue = Integer.parseInt(tenant);    // Convertir el string de tenant a int
+            parkingLotValue = Integer.parseInt(parkingLot); // Convertir el string de parkingLot a int
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Expense, Tenant, and Parking Lot must be valid integers!", "Invalid input", JOptionPane.WARNING_MESSAGE);
+            return;  // Salir si la conversión falla
+        }
+
+        // Actualizar en MongoDB
+        AmountDAO dao = new AmountDAO();
+        dao.updateAmount(house, coowner, expenseValue, tenantValue, parkingLotValue);
+
+        // Actualizar en la tabla
         tblAmounts.setValueAt(house, selectedRow, 0);
         tblAmounts.setValueAt(coowner, selectedRow, 1);
-        tblAmounts.setValueAt(expense, selectedRow, 2);
-        tblAmounts.setValueAt(tenant, selectedRow, 3);
-        tblAmounts.setValueAt(parkingLot, selectedRow, 4);
+        tblAmounts.setValueAt(expenseValue, selectedRow, 2);  // Actualizar como un número
+        tblAmounts.setValueAt(tenantValue, selectedRow, 3);
+        tblAmounts.setValueAt(parkingLotValue, selectedRow, 4);
 
-        // Optionally, you can add code to update the data in the backend or database
+        JOptionPane.showMessageDialog(this, "Data updated successfully!");
     } else {
         JOptionPane.showMessageDialog(this, "Please select a row to modify.", "Error", JOptionPane.ERROR_MESSAGE);
     }
+
     }//GEN-LAST:event_btnModifyActionPerformed
 
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
         // TODO add your handling code here:
-    System.exit(0);
+        System.exit(0);
     }//GEN-LAST:event_btnExitActionPerformed
 
     private void txtHouseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtHouseActionPerformed
@@ -355,7 +402,5 @@ public class FrmAmountModify extends javax.swing.JFrame {
     private javax.swing.JTextField txtTenant;
     // End of variables declaration//GEN-END:variables
 
-    private Object[][] findData(String house, String coowner, String expense, String tenant, String parkingLot) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
+    
 }

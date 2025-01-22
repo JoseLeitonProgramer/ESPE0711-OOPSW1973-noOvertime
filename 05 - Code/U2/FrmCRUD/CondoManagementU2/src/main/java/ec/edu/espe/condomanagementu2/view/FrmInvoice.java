@@ -1,5 +1,9 @@
 package ec.edu.espe.condomanagementu2.view;
 
+import ec.edu.espe.condomanagementu2.controller.AmountDAO;
+import java.util.List;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Jose Leiton
@@ -32,12 +36,12 @@ public class FrmInvoice extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         lstMonth = new javax.swing.JList<>();
         jLabel4 = new javax.swing.JLabel();
-        spnYear = new javax.swing.JSpinner();
-        spnHouse = new javax.swing.JSpinner();
         jLabel5 = new javax.swing.JLabel();
         txtAmountToPay = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         btnCalculatePayment = new javax.swing.JButton();
+        txtHouse = new javax.swing.JTextField();
+        txtYear = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
         btnNext = new javax.swing.JButton();
         btnCancel = new javax.swing.JButton();
@@ -68,7 +72,7 @@ public class FrmInvoice extends javax.swing.JFrame {
 
         jLabel3.setText("Month:");
 
-        cmbConcept.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Expense", "Parking Lot", "Tenant", "Fine", "Certificates" }));
+        cmbConcept.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Expense", "Parking Lot", "Tenant" }));
 
         lstMonth.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "September", "November", "December" };
@@ -78,10 +82,6 @@ public class FrmInvoice extends javax.swing.JFrame {
         jScrollPane1.setViewportView(lstMonth);
 
         jLabel4.setText("Year:");
-
-        spnYear.setModel(new javax.swing.SpinnerListModel(new String[] {"2022", "2023", "2024", "2025", "2026", "2027", "2028", "2029", "2030"}));
-
-        spnHouse.setModel(new javax.swing.SpinnerNumberModel(1, 1, 60, 1));
 
         jLabel5.setFont(new java.awt.Font("Helvetica Neue", 0, 24)); // NOI18N
         jLabel5.setText("Total amount to pay is");
@@ -114,28 +114,29 @@ public class FrmInvoice extends javax.swing.JFrame {
                         .addComponent(jLabel6)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtAmountToPay, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(spnHouse, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel4)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(spnYear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(cmbConcept, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel3))
+                        .addGap(0, 28, Short.MAX_VALUE))
                     .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(btnCalculatePayment, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addComponent(jLabel1)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(txtHouse)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jLabel4)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(txtYear, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addComponent(jLabel2)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(cmbConcept, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(0, 0, Short.MAX_VALUE)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel3))
+                            .addComponent(btnCalculatePayment, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26))
@@ -151,10 +152,10 @@ public class FrmInvoice extends javax.swing.JFrame {
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jLabel1)
                                     .addComponent(jLabel4)
-                                    .addComponent(spnYear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(spnHouse, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(txtHouse, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtYear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(cmbConcept, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel2))))
                         .addGap(18, 18, 18)
@@ -229,25 +230,23 @@ public class FrmInvoice extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtAmountToPayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAmountToPayActionPerformed
-        // TODO add your handling code here:
-    String selectedConcept = (String) cmbConcept.getSelectedItem();
-    String selectedMonth = lstMonth.getSelectedValue();
-    String selectedYear = (String) spnYear.getValue();
-    int selectedHouse = (int) spnHouse.getValue();
-    
-    // Assuming some logic to calculate the amount to pay based on the selected values
-    double amountToPay = calculateAmountToPay(selectedConcept, selectedMonth, selectedYear, selectedHouse);
-    
-    txtAmountToPay.setText(String.valueOf(amountToPay));
+
     }//GEN-LAST:event_txtAmountToPayActionPerformed
 
     private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
-        // TODO add your handling code here:
-    // Retrieve the entered amount to pay
+    // Obtener el monto total calculado
     String amountToPay = txtAmountToPay.getText();
-    
-    // Display a message with the entered amount
-    javax.swing.JOptionPane.showMessageDialog(this, "The amount to pay is: $" + amountToPay);
+
+    // Mostrar un mensaje con el monto total
+    javax.swing.JOptionPane.showMessageDialog(this, "El monto a pagar es: $" + amountToPay);
+
+    // Navegar a la siguiente pantalla (FrmCard)
+    FrmCard frmCard = new FrmCard(); // Asumimos que FrmCard es el siguiente formulario
+    frmCard.setVisible(true);
+
+    // Cerrar el formulario actual
+    this.dispose();
+
     }//GEN-LAST:event_btnNextActionPerformed
 
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
@@ -256,7 +255,34 @@ public class FrmInvoice extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCancelActionPerformed
 
     private void btnCalculatePaymentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCalculatePaymentActionPerformed
-        // TODO add your handling code here:
+    // Obtener los datos del formulario
+    String house = txtHouse.getText();
+    String selectedConcept = (String) cmbConcept.getSelectedItem();
+    List<String> selectedMonths = lstMonth.getSelectedValuesList(); // Obtener los meses seleccionados
+
+    // Verificar que los campos no estén vacíos
+    if (house.isEmpty() || selectedMonths.isEmpty() || selectedConcept == null || selectedConcept.isEmpty()) {
+        JOptionPane.showMessageDialog(this, "Please fill in all required fields.");
+        return;
+    }
+
+    // Obtener el monto por el concepto seleccionado desde la base de datos
+    AmountDAO amountDAO = new AmountDAO();
+    
+    // Obtener el monto para la casa y el concepto
+    Integer amountPerMonth = amountDAO.getAmountForHouseAndConcept(house, selectedConcept);
+
+    if (amountPerMonth == null || amountPerMonth == -1) {  // Asumimos que -1 indica que no se encontró el monto
+        JOptionPane.showMessageDialog(this, "Amount not found for the selected house and concept.");
+        return;
+    }
+
+    // Calcular el monto total a pagar (multiplicando por el número de meses seleccionados)
+    double totalAmountToPay = amountPerMonth * selectedMonths.size();
+
+    // Mostrar el monto total en el campo txtAmountToPay
+    txtAmountToPay.setText(String.format("%.2f", totalAmountToPay));
+
     }//GEN-LAST:event_btnCalculatePaymentActionPerformed
 
     /**
@@ -311,12 +337,9 @@ public class FrmInvoice extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblTittle;
     private javax.swing.JList<String> lstMonth;
-    private javax.swing.JSpinner spnHouse;
-    private javax.swing.JSpinner spnYear;
     private javax.swing.JTextField txtAmountToPay;
+    private javax.swing.JTextField txtHouse;
+    private javax.swing.JTextField txtYear;
     // End of variables declaration//GEN-END:variables
 
-    private double calculateAmountToPay(String selectedConcept, String selectedMonth, String selectedYear, int selectedHouse) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
 }

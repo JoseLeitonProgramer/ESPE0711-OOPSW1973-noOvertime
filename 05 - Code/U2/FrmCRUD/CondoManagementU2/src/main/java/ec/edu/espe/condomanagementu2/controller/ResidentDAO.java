@@ -62,6 +62,8 @@ public class ResidentDAO {
     }
     return residents;  // Retorna la lista de residentes
 }
+    
+    
 
 }
 

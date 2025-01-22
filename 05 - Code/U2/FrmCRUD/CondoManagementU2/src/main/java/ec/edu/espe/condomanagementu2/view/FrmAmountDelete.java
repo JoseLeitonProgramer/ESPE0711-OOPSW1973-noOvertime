@@ -4,6 +4,10 @@
  */
 package ec.edu.espe.condomanagementu2.view;
 
+import ec.edu.espe.condomanagementu2.controller.AmountDAO;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Jose Leiton
@@ -227,77 +231,72 @@ public class FrmAmountDelete extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnUploadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUploadActionPerformed
-        // TODO add your handling code here:
-        // Code to handle the upload action
-        javax.swing.JFileChooser fileChooser = new javax.swing.JFileChooser();
-        int returnValue = fileChooser.showOpenDialog(this);
-        if (returnValue == javax.swing.JFileChooser.APPROVE_OPTION) {
-            java.io.File selectedFile = fileChooser.getSelectedFile();
-            // Handle the file upload logic here
-            System.out.println("File selected: " + selectedFile.getAbsolutePath());
-        }
+        // Obtener el modelo de la tabla
+    DefaultTableModel model = (DefaultTableModel) tblAmounts.getModel();
+
+    // Cargar datos desde MongoDB
+    AmountDAO dao = new AmountDAO();
+    dao.loadAmountsToTable(model);
+
+    JOptionPane.showMessageDialog(this, "Data uploaded successfully!");
+
+
+       
+
+        
     }//GEN-LAST:event_btnUploadActionPerformed
 
     private void btnFindActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFindActionPerformed
-        // TODO add your handling code here:
-        // Code to handle the find action
-        String house = txtHouse.getText();
-        String coowner = txtCoowner.getText();
-        String expense = txtExpense.getText();
-        String tenant = txtTenant.getText();
-        String parkingLot = txtParkingLot.getText();
+    // Crear una instancia del DAO
+    AmountDAO amountDAO = new AmountDAO();
 
-        // Implement the logic to find the records based on the input fields
-        // For example, you can filter the table data based on the input values
-        javax.swing.table.DefaultTableModel model = (javax.swing.table.DefaultTableModel) tblAmounts.getModel();
-        java.util.List<Object[]> filteredData = new java.util.ArrayList<>();
+    // Obtener los valores de los campos de texto
+    String house = txtHouse.getText();
+    String coowner = txtCoowner.getText();
+    String expense = txtExpense.getText();
+    String tenant = txtTenant.getText();
+    String parkingLot = txtParkingLot.getText();
 
-        for (int i = 0; i < model.getRowCount(); i++) {
-            boolean match = true;
-            if (!house.isEmpty() && !house.equals(model.getValueAt(i, 0).toString())) {
-            match = false;
-            }
-            if (!coowner.isEmpty() && !coowner.equals(model.getValueAt(i, 1).toString())) {
-            match = false;
-            }
-            if (!expense.isEmpty() && !expense.equals(model.getValueAt(i, 2).toString())) {
-            match = false;
-            }
-            if (!tenant.isEmpty() && !tenant.equals(model.getValueAt(i, 3).toString())) {
-            match = false;
-            }
-            if (!parkingLot.isEmpty() && !parkingLot.equals(model.getValueAt(i, 4).toString())) {
-            match = false;
-            }
-            if (match) {
-            filteredData.add(new Object[]{
-                model.getValueAt(i, 0),
-                model.getValueAt(i, 1),
-                model.getValueAt(i, 2),
-                model.getValueAt(i, 3),
-                model.getValueAt(i, 4)
-            });
-            }
-        }
+    // Llamar al método de búsqueda
+    amountDAO.findAmounts((DefaultTableModel) tblAmounts.getModel(), house, coowner, expense, tenant, parkingLot);
 
-        // Update the table with the filtered data
-        model.setRowCount(0);
-        for (Object[] rowData : filteredData) {
-            model.addRow(rowData);
-        }
     }//GEN-LAST:event_btnFindActionPerformed
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
-        // TODO add your handling code here:
-        int selectedRow = tblAmounts.getSelectedRow();
-        if (selectedRow != -1) {
-            javax.swing.table.DefaultTableModel model = (javax.swing.table.DefaultTableModel) tblAmounts.getModel();
-            model.removeRow(selectedRow);
-            // Optionally, you can add code here to delete the record from the database or data source
-            System.out.println("Record deleted successfully.");
-        } else {
-            System.out.println("Please select a row to delete.");
-        }
+    // Crear una instancia de AmountDAO
+    AmountDAO amountDAO = new AmountDAO();
+
+    // Obtener la fila seleccionada de la tabla
+    int selectedRow = tblAmounts.getSelectedRow();
+    if (selectedRow != -1) {
+        // Obtener los valores de la fila seleccionada
+        String house = (String) tblAmounts.getValueAt(selectedRow, 0);  // Columna 0: house
+        String coowner = (String) tblAmounts.getValueAt(selectedRow, 1);  // Columna 1: coowner
+        int expense = (int) tblAmounts.getValueAt(selectedRow, 2);  // Columna 2: expense
+        int tenant = (int) tblAmounts.getValueAt(selectedRow, 3);  // Columna 3: tenant
+        int parkingLot = (int) tblAmounts.getValueAt(selectedRow, 4);  // Columna 4: parkingLot
+
+        // Eliminar el registro desde la base de datos utilizando el DAO
+        amountDAO.deleteAmount(house, coowner, expense, tenant, parkingLot);
+
+        // Actualizar la tabla para reflejar los cambios
+        javax.swing.table.DefaultTableModel model = (javax.swing.table.DefaultTableModel) tblAmounts.getModel();
+        model.removeRow(selectedRow);  // Eliminar la fila seleccionada de la tabla
+
+        // Limpiar los campos de texto
+        txtHouse.setText("");
+        txtCoowner.setText("");
+        txtExpense.setText("");
+        txtTenant.setText("");
+        txtParkingLot.setText("");
+
+        // Mostrar mensaje de confirmación
+        JOptionPane.showMessageDialog(this, "Record deleted successfully.");
+    } else {
+        // Si no hay fila seleccionada, mostrar un mensaje de error
+        JOptionPane.showMessageDialog(this, "Please select a row to delete.", "Error", JOptionPane.ERROR_MESSAGE);
+    }
+
     }//GEN-LAST:event_btnDeleteActionPerformed
 
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed

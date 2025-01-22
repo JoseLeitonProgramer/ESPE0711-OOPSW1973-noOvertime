@@ -100,15 +100,15 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
-                                  <Component id="txtMonth" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtMonth" min="-2" pref="77" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="txtYear" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="txtYear" min="-2" pref="79" max="-2" attributes="0"/>
+                                  <EmptySpace pref="32" max="32767" attributes="0"/>
                                   <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="txtCvv" pref="121" max="32767" attributes="0"/>
+                                  <Component id="txtCvv" min="-2" pref="116" max="-2" attributes="0"/>
                               </Group>
                               <Component id="txtCardNumber" max="32767" attributes="0"/>
                           </Group>

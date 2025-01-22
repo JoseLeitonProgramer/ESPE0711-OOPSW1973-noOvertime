@@ -1,5 +1,6 @@
 package ec.edu.espe.condomanagementu2.view;
 
+import ec.edu.espe.condomanagementu2.controller.AmountDAO;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -86,7 +87,7 @@ public class FrmAmountAdd extends javax.swing.JFrame {
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class
+                java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -206,28 +207,79 @@ public class FrmAmountAdd extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnUploadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUploadActionPerformed
-        // Code to upload data
+    try {
+        // Obtener el modelo de la tabla
+        DefaultTableModel model = (DefaultTableModel) tblAmounts.getModel();
+
+        // Cargar datos desde MongoDB
+        AmountDAO dao = new AmountDAO();
+        dao.loadAmountsToTable(model);
+
+        // Mostrar mensaje de éxito
         JOptionPane.showMessageDialog(this, "Data uploaded successfully!");
+    } catch (Exception e) {
+        // Mostrar mensaje de error en caso de que falle la carga
+        JOptionPane.showMessageDialog(this, "Error uploading data: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+    }
+
     }//GEN-LAST:event_btnUploadActionPerformed
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
-        // Get data from text fields
-        String house = txtHouse.getText();
-        String coowner = txtCoowner.getText();
-        String expense = txtExpense.getText();
-        String tenant = txtTenant.getText();
-        String parkingLot = txtParkingLot.getText();
+    // Obtener datos de los campos
+    String house = txtHouse.getText().trim();
+    String coowner = txtCoowner.getText().trim();
+    String expenseStr = txtExpense.getText().trim();
+    String tenantStr = txtTenant.getText().trim();
+    String parkingLotStr = txtParkingLot.getText().trim();
 
-        // Add data to the table
-        DefaultTableModel model = (DefaultTableModel) tblAmounts.getModel();
-        model.addRow(new Object[]{house, coowner, expense, tenant, parkingLot});
+    // Validar que los valores numéricos sean válidos
+    int expense = 0;
+    int tenant = 0;
+    int parkingLot = 0;
+    
+    if (house.isEmpty() || coowner.isEmpty()) {
+        JOptionPane.showMessageDialog(this, "House and Coowner fields cannot be empty!");
+        return;
+    }
 
-        // Clear text fields
-        txtHouse.setText("");
-        txtCoowner.setText("");
-        txtExpense.setText("");
-        txtTenant.setText("");
-        txtParkingLot.setText("");
+    try {
+        expense = Integer.parseInt(expenseStr);  // Convertir a int
+    } catch (NumberFormatException e) {
+        JOptionPane.showMessageDialog(this, "Expense must be a valid integer!");
+        return;
+    }
+
+    try {
+        tenant = Integer.parseInt(tenantStr);  // Convertir a int
+    } catch (NumberFormatException e) {
+        JOptionPane.showMessageDialog(this, "Tenant must be a valid integer!");
+        return;
+    }
+
+    try {
+        parkingLot = Integer.parseInt(parkingLotStr);  // Convertir a int
+    } catch (NumberFormatException e) {
+        JOptionPane.showMessageDialog(this, "Parking Lot must be a valid integer!");
+        return;
+    }
+
+    // Añadir datos a la tabla
+    DefaultTableModel model = (DefaultTableModel) tblAmounts.getModel();
+    model.addRow(new Object[]{house, coowner, expense, tenant, parkingLot});
+
+    // Guardar en MongoDB
+    AmountDAO dao = new AmountDAO();
+    dao.createAmount(house, coowner, expense, tenant, parkingLot);
+
+    // Limpiar campos
+    txtHouse.setText("");
+    txtCoowner.setText("");
+    txtExpense.setText("");
+    txtTenant.setText("");
+    txtParkingLot.setText("");
+
+    JOptionPane.showMessageDialog(this, "Amount added successfully!");
+
     }//GEN-LAST:event_btnAddActionPerformed
 
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
