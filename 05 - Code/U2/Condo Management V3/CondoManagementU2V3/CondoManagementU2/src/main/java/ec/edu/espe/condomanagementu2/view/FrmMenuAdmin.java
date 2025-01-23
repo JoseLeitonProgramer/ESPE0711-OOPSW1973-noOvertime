@@ -30,7 +30,10 @@ public class FrmMenuAdmin extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         mnuResidentVehicle = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
+        mnuAddAmount = new javax.swing.JMenu();
+        jCheckBoxMenuItem2 = new javax.swing.JCheckBoxMenuItem();
+        mnuEditAmount = new javax.swing.JCheckBoxMenuItem();
+        mnuDeleteAmount = new javax.swing.JCheckBoxMenuItem();
         jMenu3 = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
@@ -61,8 +64,36 @@ public class FrmMenuAdmin extends javax.swing.JFrame {
 
         jMenuBar1.add(mnuResidentVehicle);
 
-        jMenu2.setText("Facturación y Pagos");
-        jMenuBar1.add(jMenu2);
+        mnuAddAmount.setText("Facturación y Pagos");
+
+        jCheckBoxMenuItem2.setSelected(true);
+        jCheckBoxMenuItem2.setText("Agregar Obligaciones");
+        jCheckBoxMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBoxMenuItem2ActionPerformed(evt);
+            }
+        });
+        mnuAddAmount.add(jCheckBoxMenuItem2);
+
+        mnuEditAmount.setSelected(true);
+        mnuEditAmount.setText("Editar Obligaciones");
+        mnuEditAmount.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuEditAmountActionPerformed(evt);
+            }
+        });
+        mnuAddAmount.add(mnuEditAmount);
+
+        mnuDeleteAmount.setSelected(true);
+        mnuDeleteAmount.setText("Eliminar Obligaciones");
+        mnuDeleteAmount.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuDeleteAmountActionPerformed(evt);
+            }
+        });
+        mnuAddAmount.add(mnuDeleteAmount);
+
+        jMenuBar1.add(mnuAddAmount);
 
         jMenu3.setText("Reservas de Áreas Comunes");
 
@@ -178,6 +209,28 @@ public class FrmMenuAdmin extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void mnuEditAmountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuEditAmountActionPerformed
+       FrmAmountModify frm = new FrmAmountModify();
+    
+    // Hacer visible el formulario
+    frm.setVisible(true);
+    }//GEN-LAST:event_mnuEditAmountActionPerformed
+
+    private void jCheckBoxMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxMenuItem2ActionPerformed
+        // Crear una instancia del formulario FrmAmountAdd
+    FrmAmountAdd frm = new FrmAmountAdd();
+    
+    // Hacer visible el formulario
+    frm.setVisible(true);
+    }//GEN-LAST:event_jCheckBoxMenuItem2ActionPerformed
+
+    private void mnuDeleteAmountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuDeleteAmountActionPerformed
+        FrmAmountDelete frm = new FrmAmountDelete();
+    
+    // Hacer visible el formulario
+    frm.setVisible(true);
+    }//GEN-LAST:event_mnuDeleteAmountActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -216,7 +269,7 @@ public class FrmMenuAdmin extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
-    private javax.swing.JMenu jMenu2;
+    private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
@@ -227,6 +280,9 @@ public class FrmMenuAdmin extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
+    private javax.swing.JMenu mnuAddAmount;
+    private javax.swing.JCheckBoxMenuItem mnuDeleteAmount;
+    private javax.swing.JCheckBoxMenuItem mnuEditAmount;
     private javax.swing.JMenu mnuResidentVehicle;
     // End of variables declaration//GEN-END:variables
 }
