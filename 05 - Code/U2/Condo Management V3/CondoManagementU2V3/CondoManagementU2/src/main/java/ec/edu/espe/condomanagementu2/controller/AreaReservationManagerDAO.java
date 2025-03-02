@@ -17,7 +17,7 @@ public class AreaReservationManagerDAO {
     private MongoCollection<Document> reservationCollection;
 
     public AreaReservationManagerDAO() {
-        // Obtener la conexión a la base de datos
+       
         MongoDatabase database = MongoDBManager.getDatabase();
         if (database != null) {
             reservationCollection = database.getCollection("reservations");

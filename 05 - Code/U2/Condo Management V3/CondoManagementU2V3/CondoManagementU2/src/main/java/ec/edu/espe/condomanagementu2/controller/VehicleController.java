@@ -19,7 +19,7 @@ public class VehicleController {
         collection = database.getCollection("vehicles");
     }
 
-    // Crear vehículo
+    
     public void createVehicle(Vehicle vehicle) {
         Document doc = new Document("VehicleID", vehicle.getVehicleID())
                 .append("make", vehicle.getMake())
@@ -28,7 +28,7 @@ public class VehicleController {
         collection.insertOne(doc);
     }
 
-    // Leer vehículo (por placa)
+  
     public Vehicle readVehicle(String VehicleID) {
         Document doc = collection.find(eq("VehicleID", VehicleID)).first();
         if (doc != null) {
@@ -42,7 +42,7 @@ public class VehicleController {
         return null;
     }
 
-    // Actualizar vehículo
+  
     public void updateVehicle(String VehicleID, Vehicle updatedVehicle) {
         Document updatedDoc = new Document("VehicleID", updatedVehicle.getVehicleID())
                 .append("make", updatedVehicle.getMake())
@@ -51,21 +51,21 @@ public class VehicleController {
         collection.updateOne(eq("VehicleID", VehicleID), new Document("$set", updatedDoc));
     }
 
-    // Eliminar vehículo
+
    public boolean deleteVehicle(String vehicleID) {
     Document vehicle = collection.find(eq("VehicleID", vehicleID)).first();
 
-    // Verificar si el vehículo existe
+
     if (vehicle == null) {
-        return false;  // Retorna false si no se encuentra el vehículo
+        return false; 
     }
 
-    // Si existe, eliminarlo
+
     collection.deleteOne(eq("VehicleID", vehicleID));
-    return true;  // Retorna true si el vehículo fue eliminado
+    return true;  
 }
 
-    // Obtener todos los vehículos
+ 
     public List<Vehicle> getAllVehicles() {
         List<Vehicle> vehicles = new ArrayList<>();
         for (Document doc : collection.find()) {
