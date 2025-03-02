@@ -11,7 +11,9 @@ import utils.ValidationUtils;
  */
 public class FrmLogin extends javax.swing.JFrame {
 // Variable para almacenar el rol seleccionado
+
     private String selectedRole = null;
+
     /**
      * Creates new form FrmLogin
      */
@@ -32,7 +34,7 @@ public class FrmLogin extends javax.swing.JFrame {
 
         jPanel2 = new javax.swing.JPanel();
         Right = new javax.swing.JPanel();
-        jLabel5 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -57,23 +59,23 @@ public class FrmLogin extends javax.swing.JFrame {
         Right.setMinimumSize(new java.awt.Dimension(400, 500));
         Right.setPreferredSize(new java.awt.Dimension(400, 500));
 
-        jLabel5.setIcon(new javax.swing.ImageIcon("C:\\Users\\Asus\\Documents\\NetBeansProjects\\CondoManagementU2\\src\\main\\java\\image\\LogoCondominio.jpg")); // NOI18N
+        jLabel7.setIcon(new javax.swing.ImageIcon("C:\\Users\\Asus\\ESPE0711-OOPSW1973-noOvertime\\05 - Code\\U2\\Condo Management V3\\CondoManagementU2V3\\CondoManagementU2\\src\\main\\resources\\images\\LogoCondominio.jpg")); // NOI18N
 
         javax.swing.GroupLayout RightLayout = new javax.swing.GroupLayout(Right);
         Right.setLayout(RightLayout);
         RightLayout.setHorizontalGroup(
             RightLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, RightLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 326, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28))
+                .addContainerGap(41, Short.MAX_VALUE)
+                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 327, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         RightLayout.setVerticalGroup(
             RightLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(RightLayout.createSequentialGroup()
-                .addGap(131, 131, 131)
-                .addComponent(jLabel5)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(105, 105, 105)
+                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(151, Short.MAX_VALUE))
         );
 
         jPanel2.add(Right);
@@ -265,8 +267,6 @@ public class FrmLogin extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    
-
 
     private void psfPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_psfPasswordActionPerformed
         // TODO add your handling code here:
@@ -293,74 +293,71 @@ public class FrmLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_psfPasswordActionPerformed
 
 
-    
-    
-    
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         // TODO add your handling code here:
-       String email = txtEmail.getText().trim();
-    String password = new String(psfPassword.getPassword()).trim();
+        String email = txtEmail.getText().trim();
+        String password = new String(psfPassword.getPassword()).trim();
 
-    if (!ValidationUtils.validateNotEmpty(email, "Email") || !ValidationUtils.validateEmail(email)) {
-        txtEmail.requestFocus();
-        return;
+        if (!ValidationUtils.validateNotEmpty(email, "Email") || !ValidationUtils.validateEmail(email)) {
+            txtEmail.requestFocus();
+            return;
+        }
+
+        if (!ValidationUtils.validateNotEmpty(password, "Contraseña")) {
+            psfPassword.requestFocus();
+            return;
+        }
+
+        if (selectedRole == null) {
+            JOptionPane.showMessageDialog(this, "Por favor, seleccione un rol antes de iniciar sesión.");
+            return;
+        }
+
+        try {
+            LoginDAO loginDAO = new LoginDAO();
+            User user = loginDAO.validateUser(email, password, selectedRole);
+            redirectUser(user);
+        } catch (IllegalArgumentException e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+            resetLoginForm();
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, "Error inesperado: " + ex.getMessage());
+        }
     }
 
-    if (!ValidationUtils.validateNotEmpty(password, "Contraseña")) {
-        psfPassword.requestFocus();
-        return;
-    }
-
-    if (selectedRole == null) {
-        JOptionPane.showMessageDialog(this, "Por favor, seleccione un rol antes de iniciar sesión.");
-        return;
-    }
-
-    try {
-        LoginDAO loginDAO = new LoginDAO();
-        User user = loginDAO.validateUser(email, password, selectedRole);
-        redirectUser(user);
-    } catch (IllegalArgumentException e) {
-        JOptionPane.showMessageDialog(this, e.getMessage());
-        resetLoginForm();
-    } catch (Exception ex) {
-        JOptionPane.showMessageDialog(this, "Error inesperado: " + ex.getMessage());
-    }
-    }
-
-private void resetLoginForm() {
-    txtEmail.setText("");
-    psfPassword.setText("");
-    btnLogin.setEnabled(false);
-    selectedRole = null;
+    private void resetLoginForm() {
+        txtEmail.setText("");
+        psfPassword.setText("");
+        btnLogin.setEnabled(false);
+        selectedRole = null;
     }
 
 // Método para manejar la redirección según el tipo de usuario
     private void redirectUser(User user) {
-        
 
-    if (user == null) {
-        JOptionPane.showMessageDialog(this, "Error: el usuario no existe. Verifique las credenciales.");
-        return;
-    }
-
-    try {
-        if (user.getType().equalsIgnoreCase("Administrador")) {
-            JOptionPane.showMessageDialog(this, "Bienvenido Administrador: " + user.getEmail());
-            FrmMenuAdmin menuAdmin = new FrmMenuAdmin(); // Crear instancia del formulario de administrador
-            menuAdmin.setVisible(true); // Mostrar formulario de administrador
-        } else if (user.getType().equalsIgnoreCase("Residente")) {
-            JOptionPane.showMessageDialog(this, "Bienvenido Residente: " + user.getEmail());
-            FrmMenuResident menuResident = new FrmMenuResident(); // Crear instancia del formulario de residente
-            menuResident.setVisible(true); // Mostrar formulario de residente
-        } else {
-            JOptionPane.showMessageDialog(this, "Tipo de usuario no reconocido. Contacte al administrador del sistema.");
+        if (user == null) {
+            JOptionPane.showMessageDialog(this, "Error: el usuario no existe. Verifique las credenciales.");
+            return;
         }
-    } catch (Exception ex) {
-        JOptionPane.showMessageDialog(this, "Error al redirigir al usuario: " + ex.getMessage());
-    }
 
-    this.dispose(); // Cerrar el formulario de login
+        try {
+            if (user.getType().equalsIgnoreCase("Administrador")) {
+                JOptionPane.showMessageDialog(this, "Bienvenido Administrador: " + user.getEmail());
+            } else if (user.getType().equalsIgnoreCase("Residente")) {
+                JOptionPane.showMessageDialog(this, "Bienvenido Residente: " + user.getEmail());
+            } else {
+                JOptionPane.showMessageDialog(this, "Tipo de usuario no reconocido. Contacte al administrador del sistema.");
+                return;
+            }
+
+            // Instanciar la pantalla de splash basada en video
+            SplashScreen splashScreen = new SplashScreen(user);
+            splashScreen.setVisible(true);
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, "Error al redirigir al usuario: " + ex.getMessage());
+        }
+
+        this.dispose(); // Cierra el formulario de login
 
     }//GEN-LAST:event_btnLoginActionPerformed
 
@@ -376,8 +373,8 @@ private void resetLoginForm() {
         // TODO add your handling code here:
 
         selectedRole = "Residente"; // Coincide con "type" en MongoDB
-    JOptionPane.showMessageDialog(this, "Rol seleccionado: Residente");
-    btnLogin.setEnabled(true);
+        JOptionPane.showMessageDialog(this, "Rol seleccionado: Residente");
+        btnLogin.setEnabled(true);
     }//GEN-LAST:event_btnResidentActionPerformed
 
     private void txtEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailActionPerformed
@@ -467,8 +464,8 @@ private void resetLoginForm() {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPasswordField psfPassword;

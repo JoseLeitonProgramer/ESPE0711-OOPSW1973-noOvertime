@@ -7,6 +7,7 @@ ec\edu\espe\condomanagementu2\view\FrmInvoice$12.class
 ec\edu\espe\condomanagementu2\view\FrmAmountModify$1.class
 ec\edu\espe\condomanagementu2\view\FrmAmountAdd$1.class
 ec\edu\espe\condomanagementu2\controller\UserDAO.class
+ec\edu\espe\condomanagementu2\view\SplashScreen$1.class
 ec\edu\espe\condomanagementu2\view\FrmAreaReservationManager$3.class
 ec\edu\espe\condomanagementu2\view\FrmAreaReservationResidentID$1.class
 ec\edu\espe\condomanagementu2\view\FrmAmountDelete$3.class
@@ -149,6 +150,7 @@ ec\edu\espe\condomanagementu2\view\FrmVehicle.class
 ec\edu\espe\condomanagementu2\view\FrmInvoice$4.class
 ec\edu\espe\condomanagementu2\view\FrmLogin$2.class
 ec\edu\espe\condomanagementu2\view\FrmViewVehicle$1.class
+ec\edu\espe\condomanagementu2\view\SplashScreen.class
 ec\edu\espe\condomanagementu2\view\FrmEditVehicle$3.class
 ec\edu\espe\condomanagementu2\view\FrmResident$2.class
 ec\edu\espe\condomanagementu2\view\FrmEditVehicle.class
