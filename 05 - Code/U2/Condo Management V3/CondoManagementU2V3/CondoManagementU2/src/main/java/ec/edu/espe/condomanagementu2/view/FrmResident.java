@@ -81,13 +81,18 @@ public class FrmResident extends javax.swing.JFrame {
 
         jLabel5.setText("Telefono");
 
+        txtID.setToolTipText("Ingrese su numero de cedula de identidad o pasaporte");
         txtID.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtIDActionPerformed(evt);
             }
         });
 
+        txtPhone.setToolTipText("Ingrese su numero de telefono personal (10digitos)");
+
         jLabel6.setText("Correo Electronico:");
+
+        txtEmail.setToolTipText("Ingrese su correo electronico personal");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
