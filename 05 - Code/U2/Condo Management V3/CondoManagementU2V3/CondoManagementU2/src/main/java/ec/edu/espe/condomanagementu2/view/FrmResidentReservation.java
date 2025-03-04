@@ -2,6 +2,7 @@
 package ec.edu.espe.condomanagementu2.view;
 
 import ec.edu.espe.condomanagementu2.controller.AreaReservationManagerDAO;
+import ec.edu.espe.condomanagementu2.controller.PrintManager;
 import ec.edu.espe.condomanagementu2.controller.ResidentController;
 import ec.edu.espe.condomanagementu2.model.AreaReservation;
 import ec.edu.espe.condomanagementu2.model.Resident;
@@ -83,12 +84,6 @@ public class FrmResidentReservation extends javax.swing.JFrame {
                 .addGap(40, 40, 40)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnReservar)
-                        .addGap(44, 44, 44)
-                        .addComponent(jButton2)
-                        .addGap(45, 45, 45)
-                        .addComponent(jButton3))
-                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2)
                             .addComponent(jLabel3)
@@ -99,7 +94,13 @@ public class FrmResidentReservation extends javax.swing.JFrame {
                             .addComponent(txtResidentId)
                             .addComponent(txtResidentName)
                             .addComponent(txtPlace)
-                            .addComponent(txtReservationDate, javax.swing.GroupLayout.DEFAULT_SIZE, 138, Short.MAX_VALUE))))
+                            .addComponent(txtReservationDate, javax.swing.GroupLayout.DEFAULT_SIZE, 138, Short.MAX_VALUE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnReservar)
+                        .addGap(44, 44, 44)
+                        .addComponent(jButton2)
+                        .addGap(45, 45, 45)
+                        .addComponent(jButton3)))
                 .addContainerGap(49, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -126,7 +127,7 @@ public class FrmResidentReservation extends javax.swing.JFrame {
                     .addComponent(btnReservar)
                     .addComponent(jButton2)
                     .addComponent(jButton3))
-                .addContainerGap(73, Short.MAX_VALUE))
+                .addContainerGap(54, Short.MAX_VALUE))
         );
 
         pack();
