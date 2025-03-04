@@ -15,7 +15,7 @@ public class AreaReservation {
     private Date reservationDate;
      private String status;
 
-        public AreaReservation(Resident resident, String reservationId, String area, Date reservationDate, String status) {
+        public AreaReservation(Resident resident, String reservationId, Date reservationDate, String area) {
             if (reservationId == null || reservationId.isEmpty()) {
                 throw new IllegalArgumentException("El ID de la reserva no puede ser nulo o vacío");
             }
