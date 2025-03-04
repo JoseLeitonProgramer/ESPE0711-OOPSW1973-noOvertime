@@ -1,6 +1,7 @@
 package ec.edu.espe.condomanagementu2.view;
 import javax.swing.*;
 import ec.edu.espe.condomanagementu2.controller.AreaReservationDAO;
+import ec.edu.espe.condomanagementu2.controller.PrintManager;
 import ec.edu.espe.condomanagementu2.controller.ResidentController;
 import ec.edu.espe.condomanagementu2.model.AreaReservation;
 import java.util.List;
@@ -41,6 +42,7 @@ public class FrmAreaReservationResidentID extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tblReservations = new javax.swing.JTable();
         btnRegresar = new javax.swing.JButton();
+        btnImprimir = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -71,6 +73,13 @@ public class FrmAreaReservationResidentID extends javax.swing.JFrame {
             }
         });
 
+        btnImprimir.setText("Imprimir");
+        btnImprimir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnImprimirActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -84,16 +93,17 @@ public class FrmAreaReservationResidentID extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(40, 40, 40)
-                        .addComponent(jLabel1)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtResidentId, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(140, 140, 140)
-                        .addComponent(btnRegresar)))
+                .addGap(40, 40, 40)
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18)
+                .addComponent(txtResidentId, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(72, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnImprimir)
+                .addGap(56, 56, 56)
+                .addComponent(btnRegresar)
+                .addGap(101, 101, 101))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -107,7 +117,9 @@ public class FrmAreaReservationResidentID extends javax.swing.JFrame {
                 .addGap(12, 12, 12)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnRegresar)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnRegresar)
+                    .addComponent(btnImprimir))
                 .addContainerGap(22, Short.MAX_VALUE))
         );
 
@@ -163,6 +175,11 @@ public class FrmAreaReservationResidentID extends javax.swing.JFrame {
                         // Cerrar la pantalla actual
             this.dispose();
     }//GEN-LAST:event_btnRegresarActionPerformed
+
+    private void btnImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImprimirActionPerformed
+        // TODO add your handling code here:
+        PrintManager.printTable(tblReservations);
+    }//GEN-LAST:event_btnImprimirActionPerformed
 private void updateTable(List<AreaReservation> reservations) {
     DefaultTableModel model = (DefaultTableModel) tblReservations.getModel();
     model.setRowCount(0); // Limpiar las filas existentes
@@ -221,6 +238,7 @@ private void clearTable() {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscar;
+    private javax.swing.JButton btnImprimir;
     private javax.swing.JButton btnRegresar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
