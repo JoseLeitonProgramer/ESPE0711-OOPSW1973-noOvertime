@@ -7,12 +7,9 @@ package ec.edu.espe.condomanagementu2.view;
 import ec.edu.espe.condomanagementu2.controller.ValidationController;
 import ec.edu.espe.condomanagementu2.controller.ResidentController;
 import ec.edu.espe.condomanagementu2.model.Resident;
-import java.util.ArrayList;
 import javax.swing.JComponent;
 import javax.swing.JOptionPane;
-import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
-import static javax.swing.text.html.HTML.Attribute.ID;
 
 /**
  *
@@ -229,7 +226,7 @@ public class FrmResident extends javax.swing.JFrame {
         String phone = txtPhone.getText();
         String email = txtEmail.getText();
 
-        // Crear un objeto Resident con los datos obtenidos
+
         Resident newResident = new Resident(id, name, lastName, phone, email);
 
 
