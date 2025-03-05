@@ -15,17 +15,17 @@ public class AreaReservation {
     private Date reservationDate;
      private String status;
 
-    // Constructor principal
-    public AreaReservation(Resident resident1, String reservationId, Date reservationDate, String string1) {
-        if (reservationId == null || reservationId.isEmpty()) {
-            throw new IllegalArgumentException("El ID de la reserva no puede ser nulo o vacío");
+        public AreaReservation(Resident resident, String reservationId, Date reservationDate, String area) {
+            if (reservationId == null || reservationId.isEmpty()) {
+                throw new IllegalArgumentException("El ID de la reserva no puede ser nulo o vacío");
+            }
+            this.reservationId = reservationId;
+            this.resident = resident;
+            this.area = area;
+            this.reservationDate = reservationDate;
+            this.status = status;
         }
-        this.reservationId = reservationId;
-        this.resident = resident;
-        this.area = area;
-        this.reservationDate = reservationDate;
-        this.status = status;
-    }
+
 
     // Constructor vacío
     public AreaReservation() {

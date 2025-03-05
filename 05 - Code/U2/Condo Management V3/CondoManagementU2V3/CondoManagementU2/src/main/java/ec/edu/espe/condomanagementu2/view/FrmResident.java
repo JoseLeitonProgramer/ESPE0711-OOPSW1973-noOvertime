@@ -7,12 +7,9 @@ package ec.edu.espe.condomanagementu2.view;
 import ec.edu.espe.condomanagementu2.controller.ValidationController;
 import ec.edu.espe.condomanagementu2.controller.ResidentController;
 import ec.edu.espe.condomanagementu2.model.Resident;
-import java.util.ArrayList;
 import javax.swing.JComponent;
 import javax.swing.JOptionPane;
-import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
-import static javax.swing.text.html.HTML.Attribute.ID;
 
 /**
  *
@@ -84,13 +81,18 @@ public class FrmResident extends javax.swing.JFrame {
 
         jLabel5.setText("Telefono");
 
+        txtID.setToolTipText("Ingrese su numero de cedula de identidad o pasaporte");
         txtID.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtIDActionPerformed(evt);
             }
         });
 
+        txtPhone.setToolTipText("Ingrese su numero de telefono personal (10digitos)");
+
         jLabel6.setText("Correo Electronico:");
+
+        txtEmail.setToolTipText("Ingrese su correo electronico personal");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -229,7 +231,7 @@ public class FrmResident extends javax.swing.JFrame {
         String phone = txtPhone.getText();
         String email = txtEmail.getText();
 
-        // Crear un objeto Resident con los datos obtenidos
+
         Resident newResident = new Resident(id, name, lastName, phone, email);
 
 

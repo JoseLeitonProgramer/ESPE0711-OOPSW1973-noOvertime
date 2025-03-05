@@ -1,6 +1,7 @@
 package ec.edu.espe.condomanagementu2.view;
 
 import ec.edu.espe.condomanagementu2.controller.AreaReservationManagerDAO;
+import ec.edu.espe.condomanagementu2.controller.PrintManager;
 import ec.edu.espe.condomanagementu2.controller.ResidentController;
 import ec.edu.espe.condomanagementu2.model.AreaReservation;
 import ec.edu.espe.condomanagementu2.model.Resident;
@@ -44,6 +45,7 @@ public class FrmAreaReservationManager extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         txtResidentId = new javax.swing.JTextField();
         btnCerrar = new javax.swing.JButton();
+        btnImprimir = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -99,6 +101,13 @@ public class FrmAreaReservationManager extends javax.swing.JFrame {
             }
         });
 
+        btnImprimir.setText("Imprimir");
+        btnImprimir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnImprimirActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -119,14 +128,19 @@ public class FrmAreaReservationManager extends javax.swing.JFrame {
                 .addComponent(txtResidentId, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addComponent(btnCrear)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnEditar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnCancelar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnCerrar)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(23, 23, 23)
+                        .addComponent(btnCrear)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnEditar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnCancelar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnCerrar))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(194, 194, 194)
+                        .addComponent(btnImprimir)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -146,7 +160,9 @@ public class FrmAreaReservationManager extends javax.swing.JFrame {
                     .addComponent(btnEditar)
                     .addComponent(btnCancelar)
                     .addComponent(btnCerrar))
-                .addContainerGap(60, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(btnImprimir)
+                .addContainerGap(19, Short.MAX_VALUE))
         );
 
         pack();
@@ -299,6 +315,11 @@ public class FrmAreaReservationManager extends javax.swing.JFrame {
         // TODO add your handling code here:
             this.dispose();
     }//GEN-LAST:event_btnCerrarActionPerformed
+
+    private void btnImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImprimirActionPerformed
+        // TODO add your handling code here:
+        PrintManager.printTable(tblReservations);
+    }//GEN-LAST:event_btnImprimirActionPerformed
     private void updateTable() {
         try {
             AreaReservationManagerDAO managerDAO = new AreaReservationManagerDAO();
@@ -366,6 +387,7 @@ public class FrmAreaReservationManager extends javax.swing.JFrame {
     private javax.swing.JButton btnCerrar;
     private javax.swing.JButton btnCrear;
     private javax.swing.JButton btnEditar;
+    private javax.swing.JButton btnImprimir;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;

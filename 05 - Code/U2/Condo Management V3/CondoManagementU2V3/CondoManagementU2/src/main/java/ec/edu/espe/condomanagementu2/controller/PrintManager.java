@@ -13,9 +13,16 @@ public class PrintManager {
 
     public static void printTable(JTable table) {
         try {
+<<<<<<< HEAD
 
             PrinterJob job = PrinterJob.getPrinterJob();
 
+=======
+          
+            PrinterJob job = PrinterJob.getPrinterJob();
+
+
+>>>>>>> 13402ff0e4d20549e00a7a6c930c8a1c12f28317
             if (job.printDialog()) {
 
                 MessageFormat header = new MessageFormat("Lista de Vehículos / Residentes");

@@ -173,6 +173,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtID">
+          <Properties>
+            <Property name="toolTipText" type="java.lang.String" value="Ingrese su numero de cedula de identidad o pasaporte"/>
+          </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtIDActionPerformed"/>
           </Events>
@@ -182,6 +185,9 @@
         <Component class="javax.swing.JTextField" name="txtLastName">
         </Component>
         <Component class="javax.swing.JTextField" name="txtPhone">
+          <Properties>
+            <Property name="toolTipText" type="java.lang.String" value="Ingrese su numero de telefono personal (10digitos)"/>
+          </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel6">
           <Properties>
@@ -189,6 +195,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtEmail">
+          <Properties>
+            <Property name="toolTipText" type="java.lang.String" value="Ingrese su correo electronico personal"/>
+          </Properties>
         </Component>
       </SubComponents>
     </Container>
