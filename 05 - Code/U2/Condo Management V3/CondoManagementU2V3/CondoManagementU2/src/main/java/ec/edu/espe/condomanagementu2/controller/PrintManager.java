@@ -31,34 +31,6 @@ public class PrintManager {
 
                 // Show appropriate message based on the print result
                 
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
                 if (complete) {
                     JOptionPane.showMessageDialog(null, "Impresión completada correctamente.");
                 } else {
